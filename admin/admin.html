@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="vi" class="light-theme">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>Quản Trị Hệ Thống - Exploding Kitten</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛡️</text></svg>">
+    
+    <!-- Google Fonts (Be Vietnam Pro, JetBrains Mono) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="admin.css?v=6">
+</head>
+<body>
+
+    <!-- MAIN ADMIN DASHBOARD -->
+    <div id="adminDashboard" class="admin-dashboard">
+        <!-- Top Navigation Header -->
+        <header class="admin-header">
+            <div class="header-brand">
+                <span class="brand-name">ADMIN CONTROL CENTER</span>
+            </div>
+
+            <div class="header-center">
+                <div id="serverStatusBadge" class="status-pill" title="Trạng thái máy chủ">
+                    <span class="status-dot"></span>
+                    <span id="serverStatusText">Đang kiểm tra kết nối...</span>
+                </div>
+            </div>
+
+            <div class="header-actions">
+                <div class="header-control-item" title="Khóa / Mở quyền tải ảnh avatar toàn cục cho người chơi">
+                    <span class="header-control-label">TẢI AVATAR:</span>
+                    <button id="btnToggleAvatarUpload" class="btn-toggle-switch active" type="button" title="Nhấp để Khóa hoặc Mở quyền tải avatar">
+                        <span class="switch-ball"></span>
+                        <span class="switch-label" id="avatarSwitchLabel">BẬT</span>
+                    </button>
+                </div>
+
+                <button id="btnRefreshData" class="nav-btn nav-btn-primary" title="Làm mới dữ liệu">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="23 4 23 10 17 10"></polyline><polyline points="1 20 1 14 7 14"></polyline><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path></svg>
+                    <span>LÀM MỚI</span>
+                </button>
+
+                <button class="nav-btn nav-btn-icon" id="btnToggleTheme" title="Chuyển đổi giao diện Sáng / Tối">
+                    <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+                    <span>Tối</span>
+                </button>
+            </div>
+        </header>
+
+        <!-- Stats Overview Cards -->
+        <section class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-icon stat-icon-users">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                </div>
+                <div class="stat-data">
+                    <span class="stat-label">TỔNG NGƯỜI CHƠI</span>
+                    <span id="statTotalUsers" class="stat-value">0</span>
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon stat-icon-google">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ea4335" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                </div>
+                <div class="stat-data">
+                    <span class="stat-label">TÀI KHOẢN GOOGLE</span>
+                    <span id="statGoogleUsers" class="stat-value">0</span>
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon stat-icon-email">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                </div>
+                <div class="stat-data">
+                    <span class="stat-label">TÀI KHOẢN EMAIL</span>
+                    <span id="statEmailUsers" class="stat-value">0</span>
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon stat-icon-active">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fbbf24" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                </div>
+                <div class="stat-data">
+                    <span class="stat-label">ONLINE GẦN ĐÂY (24H)</span>
+                    <span id="statRecentActive" class="stat-value">0</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Search, Filter & Bulk Actions Bar -->
+        <section class="toolbar-section">
+            <div class="search-box">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                <input type="text" id="searchInput" placeholder="Tìm kiếm theo Tên người chơi, Gmail / Email, hoặc UID...">
+                <button id="btnClearSearch" class="btn-clear-search hidden">&times;</button>
+            </div>
+
+            <div class="filter-controls">
+                <select id="filterProvider" class="filter-select" title="Lọc theo hình thức đăng ký tài khoản">
+                    <option value="all">Tất cả tài khoản</option>
+                    <option value="google">Chỉ tài khoản Google</option>
+                    <option value="email">Chỉ tài khoản Email thường</option>
+                </select>
+
+                <select id="filterOnlineTime" class="filter-select" title="Lọc theo thời gian online gần nhất tại Sảnh (home.html)">
+                    <option value="all">Thời gian online: Tất cả</option>
+                    <option value="15m">🟢 Vừa online (15 phút)</option>
+                    <option value="1h">🟢 Online trong 1 giờ</option>
+                    <option value="24h">🟡 Online trong 24 giờ</option>
+                    <option value="3d">Online trong 3 ngày</option>
+                    <option value="7d">Online trong 7 ngày</option>
+                    <option value="30d">Online trong 30 ngày</option>
+                    <option value="offline_long">🔴 Offline lâu (&gt; 30 ngày / Chưa online)</option>
+                </select>
+
+                <select id="sortField" class="filter-select" title="Sắp xếp danh sách người chơi">
+                    <option value="recent">Mới online gần đây nhất</option>
+                    <option value="oldest_online">Online xa nhất / Offline lâu nhất</option>
+                    <option value="created">Ngày tạo mới nhất</option>
+                    <option value="rank">Điểm Rank cao nhất</option>
+                    <option value="name">Tên người chơi A - Z</option>
+                </select>
+
+                <button id="btnBulkDelete" class="btn-bulk-delete hidden">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg>
+                    <span>XÓA ĐÃ CHỌN (<b id="selectedCount">0</b>)</span>
+                </button>
+            </div>
+        </section>
+
+        <!-- Main User Table -->
+        <main class="table-container">
+            <table class="admin-table">
+                <thead>
+                    <tr>
+                        <th class="col-checkbox"><input type="checkbox" id="selectAllCheckbox"></th>
+                        <th class="col-stt">STT</th>
+                        <th class="col-player">NGƯỜI CHƠI</th>
+                        <th class="col-email">EMAIL ĐĂNG KÝ</th>
+                        <th class="col-uid">UID (DOC ID)</th>
+                        <th class="col-rank">RANK & ĐIỂM</th>
+                        <th class="col-time">ONLINE GẦN NHẤT</th>
+                        <th class="col-action">HÀNH ĐỘNG</th>
+                    </tr>
+                </thead>
+                <tbody id="usersTableBody">
+                    <!-- Dynamic Table Rows -->
+                    <tr class="loading-row">
+                        <td colspan="8">
+                            <div class="table-loader">
+                                <div class="spinner"></div>
+                                <span>Đang tải dữ liệu người chơi từ Firebase & Server Live...</span>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </main>
+
+        <!-- Table Footer -->
+        <footer class="table-footer">
+            <div id="tableInfo" class="table-info">Đang hiển thị 0 / 0 người chơi</div>
+        </footer>
+    </div>
+
+    <!-- EDIT USER MODAL (Tùy chỉnh Tên, Avatar và Điểm Rank) -->
+    <div id="editRankModal" class="modal-backdrop hidden">
+        <div class="modal-panel modal-edit-rank-panel">
+            <div class="modal-header">
+                <h2>TÙY CHỈNH THÔNG TIN NGƯỜI CHƠI</h2>
+                <button class="btn-close" id="btnCloseEditRank">&times;</button>
+            </div>
+            
+            <div class="modal-body">
+                <!-- Target Player Info Card -->
+                <div class="edit-player-info-card" id="editRankTargetInfo">
+                    <!-- Injected via JS -->
+                </div>
+
+                <!-- Section 1: Edit Avatar -->
+                <div class="auth-form-group">
+                    <label>ẢNH ĐẠI DIỆN (AVATAR)</label>
+                    <div class="edit-avatar-wrapper">
+                        <div class="edit-avatar-preview-box" id="editAvatarPreviewBox" title="Nhấp để tải ảnh đại diện mới từ máy tính">
+                            <img id="editAvatarPreviewImg" src="" alt="avatar" style="display:none;">
+                            <div id="editAvatarFallbackIcon" class="avatar-fallback-icon">
+                                <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                            </div>
+                            <div class="avatar-hover-hint">ĐỔI ẢNH</div>
+                        </div>
+                        <div class="edit-avatar-actions">
+                            <input type="file" id="editAvatarFileInput" accept="image/png,image/jpeg,image/webp,image/gif" style="display:none;">
+                            <div class="avatar-btn-row">
+                                <button type="button" id="btnChooseAvatar" class="btn-avatar-action btn-avatar-upload">
+                                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+                                    <span>TẢI ẢNH MỚI</span>
+                                </button>
+                                <button type="button" id="btnRemoveAvatar" class="btn-avatar-action btn-avatar-delete" title="Xóa avatar và trở về ảnh mặc định">
+                                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg>
+                                    <span>XÓA ẢNH</span>
+                                </button>
+                            </div>
+                            <div class="avatar-hint-note">Hỗ trợ JPG, PNG, WEBP (tự động nén tối ưu để lưu trên database).</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 2: Edit Username -->
+                <div class="auth-form-group">
+                    <label for="editUsernameInput">TÊN NGƯỜI CHƠI (USERNAME)</label>
+                    <input type="text" id="editUsernameInput" class="auth-input" placeholder="Nhập tên người chơi mới..." maxlength="25">
+                    <div class="input-hint-note">Tên hiển thị sẽ được cập nhật đồng bộ lên cả Firestore và Firebase Auth.</div>
+                </div>
+
+                <!-- Section 3: Edit Rank Score -->
+                <!-- Rank Live Preview Card -->
+                <div class="rank-live-preview-box">
+                    <span class="preview-label">HẠNG HIỂN THỊ SAU KHI LƯU:</span>
+                    <div class="preview-content">
+                        <img id="editRankPreviewIcon" src="ranker/gamo.png" class="preview-rank-img" alt="rank">
+                        <div class="preview-text-wrap">
+                            <div id="editRankPreviewTitle" class="preview-rank-title">Gà mờ</div>
+                            <div id="editRankPreviewScore" class="preview-rank-score">0 pts</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Input Score Group with Steppers -->
+                <div class="auth-form-group">
+                    <label for="editRankScoreInput">ĐIỂM RANK (PTS)</label>
+                    <div class="input-with-steppers">
+                        <button type="button" class="btn-step" id="btnStepMinus100" title="Trừ 100 điểm">-100</button>
+                        <button type="button" class="btn-step" id="btnStepMinus10" title="Trừ 10 điểm">-10</button>
+                        <input type="number" class="auth-input input-score-val" id="editRankScoreInput" min="0" max="999999" placeholder="0" step="1">
+                        <button type="button" class="btn-step" id="btnStepPlus10" title="Cộng 10 điểm">+10</button>
+                        <button type="button" class="btn-step" id="btnStepPlus100" title="Cộng 100 điểm">+100</button>
+                    </div>
+                </div>
+
+                <!-- Quick Rank Tier Preset Buttons with Rank Images -->
+                <div class="auth-form-group" style="margin-top: 4px;">
+                    <label>CHỌN NHANH THEO MỐC DANH HIỆU</label>
+                    <div class="rank-preset-buttons">
+                        <button type="button" class="btn-preset" data-preset="0">
+                            <img src="ranker/gamo.png" class="preset-rank-img" alt="Gà mờ">
+                            <span>0 (Gà mờ)</span>
+                        </button>
+                        <button type="button" class="btn-preset" data-preset="100">
+                            <img src="ranker/bietchoi.png" class="preset-rank-img" alt="Biết chơi">
+                            <span>100 (Biết chơi)</span>
+                        </button>
+                        <button type="button" class="btn-preset" data-preset="300">
+                            <img src="ranker/pro.png" class="preset-rank-img" alt="Pro">
+                            <span>300 (Pro)</span>
+                        </button>
+                        <button type="button" class="btn-preset" data-preset="600">
+                            <img src="ranker/caothu.png" class="preset-rank-img" alt="Cao thủ">
+                            <span>600 (Cao thủ)</span>
+                        </button>
+                        <button type="button" class="btn-preset" data-preset="1000">
+                            <img src="ranker/huyenthoai.png" class="preset-rank-img" alt="Huyền thoại">
+                            <span>1000 (Huyền thoại)</span>
+                        </button>
+                        <button type="button" class="btn-preset" data-preset="1500">
+                            <img src="ranker/batbai.png" class="preset-rank-img" alt="Bất bại">
+                            <span>1500 (Bất bại)</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="modal-footer-buttons">
+                    <button type="button" id="btnCancelEditRank" class="btn-modal-cancel">HỦY BỎ</button>
+                    <button type="button" id="btnSaveEditRank" class="btn-auth-submit btn-save-rank">LƯU THAY ĐỔI</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- DANGER DELETE CONFIRMATION MODAL -->
+    <div id="deleteModal" class="modal-backdrop hidden">
+        <div class="modal-panel modal-danger-panel">
+            <div class="modal-header">
+                <h2 id="deleteModalTitle" style="color: #ef4444;">XÁC NHẬN XÓA TÀI KHOẢN</h2>
+                <button class="btn-close" id="btnCloseDeleteModal">&times;</button>
+            </div>
+            
+            <div class="modal-body">
+                <div class="danger-warning-box">CẢNH BÁO: Hành động này là vĩnh viễn và không thể hoàn tác!</div>
+                <div class="user-to-delete-card" id="deleteTargetInfo">
+                    <!-- Target user info rendered here -->
+                </div>
+                <ul class="delete-impact-list">
+                    <li>Xóa tài khoản khỏi <strong>Firebase Authentication</strong> (người dùng không thể đăng nhập lại).</li>
+                    <li>Xóa Document <strong>users/{uid}</strong> trong Cloud Firestore.</li>
+                    <li>Đá văng kết nối ngay lập tức nếu người chơi đang online.</li>
+                </ul>
+
+                <div class="modal-footer-buttons">
+                    <button type="button" id="btnCancelDelete" class="btn-modal-cancel">HỦY BỎ</button>
+                    <button type="button" id="btnConfirmDelete" class="btn-danger-confirm">XÓA TẬN GỐC</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- TOAST NOTIFICATION CONTAINER -->
+    <div id="toastContainer" class="toast-container"></div>
+
+    <script src="security.js"></script>
+    <script src="config/env.js?v=32"></script>
+    <script src="admin.js?v=6"></script>
+</body>
+</html>

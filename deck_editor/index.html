@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>Decks Editor - Exploding Kitten</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🃏</text></svg>">
+
+  <!-- Clean Google Fonts (Be Vietnam Pro, JetBrains Mono) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css?v=13">
+</head>
+<body>
+
+  <!-- Minimal Sleek Navbar -->
+  <header class="app-header">
+    <div class="header-left">
+      <div class="brand">
+        <span class="brand-name">DECKS EDITOR</span>
+      </div>
+      <div id="serverStatusBadge" class="status-pill" title="Trạng thái máy chủ">
+        <span class="status-dot"></span>
+        <span id="serverStatusText">Port 3333</span>
+      </div>
+    </div>
+
+    <div class="header-right">
+      <!-- Secondary Actions -->
+      <button class="nav-btn" id="btnManageDb" title="Quản lý danh mục lá bài _CARD_IDS">
+        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 6h16M4 10h16M4 14h16M4 18h16"/></svg>
+        <span>Danh Mục</span>
+      </button>
+
+      <button class="nav-btn" id="btnImport" title="Nhập file JSON">
+        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"/></svg>
+        <span>Nhập</span>
+      </button>
+      <input type="file" id="fileInput" accept=".json" style="display: none;">
+
+      <button class="nav-btn" id="btnCopyHeader" title="Copy toàn bộ JSON">
+        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"/></svg>
+        <span>Copy</span>
+      </button>
+
+      <button class="nav-btn" id="btnExport" title="Tải file JSON về máy">
+        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+        <span>Tải JSON</span>
+      </button>
+
+      <div class="divider"></div>
+
+      <!-- Primary Save / Push Actions -->
+      <button class="nav-btn nav-btn-primary" id="btnSaveDirect" title="Lưu trực tiếp vào file decks_rankmatch.json">
+        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M8 7H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-3m-1 4l-3 3m0 0l-3-3m3 3V4"/></svg>
+        <span>Lưu</span>
+      </button>
+
+      <button class="nav-btn nav-btn-github" id="btnSaveAndPush" title="Lưu và Push thẳng lên GitHub (1-Click)">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+        <span>Push Git</span>
+      </button>
+
+      <button class="nav-btn nav-btn-icon" id="btnToggleTheme" title="Chuyển đổi giao diện Sáng (Nền trắng) / Tối">
+        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <span>Tối</span>
+      </button>
+
+      <button class="nav-btn nav-btn-icon" id="btnToggleSidebar" title="Thu gọn / Mở rộng bảng JSON Editor">
+        <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M16 18l6-6-6-6M8 6l-6 6 6 6"/></svg>
+        <span>JSON</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Studio Split Area -->
+  <main class="studio-wrapper">
+
+    <!-- LEFT STATS SIDEBAR: Vertical Category & % Breakdown -->
+    <aside class="studio-stats-sidebar">
+      <div class="stats-sidebar-header">
+        <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+        <span>Tỉ Lệ Bộ Bài</span>
+      </div>
+
+      <div class="stats-sidebar-body">
+        <!-- Total Summary Card -->
+        <div class="stat-v-card stat-v-total">
+          <div class="stat-v-row">
+            <span class="stat-v-label">Tổng số lá:</span>
+            <span class="stat-v-main" id="statTotalCards">0</span>
+          </div>
+          <div class="stat-v-sub" id="statTargetCompare">Mục tiêu: ~24 lá</div>
+        </div>
+
+        <!-- Breakdown List -->
+        <div class="stat-v-list">
+
+          <!-- Bombs -->
+          <div class="stat-v-item item-bomb" title="Bom & Cảm tử">
+            <div class="stat-v-row">
+              <div class="stat-v-tag">
+                <span class="stat-dot dot-red"></span>
+                <span class="stat-v-name">Bom</span>
+              </div>
+              <div class="stat-v-vals">
+                <span class="stat-val text-red" id="statBombCards">0</span>
+                <span class="stat-pct text-red" id="statBombPercent">(0%)</span>
+              </div>
+            </div>
+            <div class="stat-v-mini-sub" id="statBombsSub">0 Exploding</div>
+            <div class="stat-v-bar-track">
+              <div class="stat-v-bar-fill fill-red" id="statBombBar" style="width: 0%"></div>
+            </div>
+          </div>
+
+          <!-- Defuse -->
+          <div class="stat-v-item item-defuse" title="Gỡ bom">
+            <div class="stat-v-row">
+              <div class="stat-v-tag">
+                <span class="stat-dot dot-green"></span>
+                <span class="stat-v-name">Gỡ Bom</span>
+              </div>
+              <div class="stat-v-vals">
+                <span class="stat-val text-green" id="statDefuseCards">0</span>
+                <span class="stat-pct text-green" id="statDefusePercent">(0%)</span>
+              </div>
+            </div>
+            <div class="stat-v-bar-track">
+              <div class="stat-v-bar-fill fill-green" id="statDefuseBar" style="width: 0%"></div>
+            </div>
+          </div>
+
+          <!-- Attack -->
+          <div class="stat-v-item item-attack" title="Tấn công & Gây hại">
+            <div class="stat-v-row">
+              <div class="stat-v-tag">
+                <span class="stat-dot dot-gold"></span>
+                <span class="stat-v-name">Tấn Công</span>
+              </div>
+              <div class="stat-v-vals">
+                <span class="stat-val text-gold" id="statAttackCards">0</span>
+                <span class="stat-pct text-gold" id="statAttackPercent">(0%)</span>
+              </div>
+            </div>
+            <div class="stat-v-bar-track">
+              <div class="stat-v-bar-fill fill-gold" id="statAttackBar" style="width: 0%"></div>
+            </div>
+          </div>
+
+          <!-- Protect -->
+          <div class="stat-v-item item-protect" title="Bảo vệ (Nope, Đảo nghịch)">
+            <div class="stat-v-row">
+              <div class="stat-v-tag">
+                <span class="stat-dot dot-cyan"></span>
+                <span class="stat-v-name">Bảo Vệ</span>
+              </div>
+              <div class="stat-v-vals">
+                <span class="stat-val text-cyan" id="statProtectCards">0</span>
+                <span class="stat-pct text-cyan" id="statProtectPercent">(0%)</span>
+              </div>
+            </div>
+            <div class="stat-v-bar-track">
+              <div class="stat-v-bar-fill fill-cyan" id="statProtectBar" style="width: 0%"></div>
+            </div>
+          </div>
+
+          <!-- Tactical -->
+          <div class="stat-v-item item-tactical" title="Chiến thuật (Nhìn trước, Can thiệp, Hoán đổi...)">
+            <div class="stat-v-row">
+              <div class="stat-v-tag">
+                <span class="stat-dot dot-teal"></span>
+                <span class="stat-v-name">Chiến Thuật</span>
+              </div>
+              <div class="stat-v-vals">
+                <span class="stat-val text-teal" id="statTacticalCards">0</span>
+                <span class="stat-pct text-teal" id="statTacticalPercent">(0%)</span>
+              </div>
+            </div>
+            <div class="stat-v-bar-track">
+              <div class="stat-v-bar-fill fill-teal" id="statTacticalBar" style="width: 0%"></div>
+            </div>
+          </div>
+
+          <!-- Safe -->
+          <div class="stat-v-item item-safe" title="An toàn & Tiện ích">
+            <div class="stat-v-row">
+              <div class="stat-v-tag">
+                <span class="stat-dot dot-purple"></span>
+                <span class="stat-v-name">An Toàn</span>
+              </div>
+              <div class="stat-v-vals">
+                <span class="stat-val text-purple" id="statSafeCards">0</span>
+                <span class="stat-pct text-purple" id="statSafePercent">(0%)</span>
+              </div>
+            </div>
+            <div class="stat-v-bar-track">
+              <div class="stat-v-bar-fill fill-purple" id="statSafeBar" style="width: 0%"></div>
+            </div>
+          </div>
+
+          <!-- Vanilla -->
+          <div class="stat-v-item item-vanilla" title="Mèo thường (Vanilla Cats)">
+            <div class="stat-v-row">
+              <div class="stat-v-tag">
+                <span class="stat-dot dot-orange"></span>
+                <span class="stat-v-name">Mèo Thường</span>
+              </div>
+              <div class="stat-v-vals">
+                <span class="stat-val text-orange" id="statVanillaCards">0</span>
+                <span class="stat-pct text-orange" id="statVanillaPercent">(0%)</span>
+              </div>
+            </div>
+            <div class="stat-v-bar-track">
+              <div class="stat-v-bar-fill fill-orange" id="statVanillaBar" style="width: 0%"></div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </aside>
+
+    <!-- CENTER WORKSPACE: Card Grid & Controls -->
+    <section class="studio-left">
+
+      <!-- Control Header: Player Pills + Filter Chips -->
+      <div class="control-panel">
+        
+        <!-- Row 1: Player Pills & WaitNope/Actions -->
+        <div class="player-row">
+          <div class="player-pills-bar" id="playerPillsContainer">
+            <!-- Dynamic Player Tabs -->
+          </div>
+
+          <div class="player-quick-tools">
+            <div class="wait-tool" title="Thời gian chờ Nope">
+              <span class="tool-label">Wait Nope:</span>
+              <button class="step-btn" id="btnDecWaitNope" type="button">-</button>
+              <input type="number" class="step-input" id="inputWaitNope" min="1" max="10" value="2">
+              <button class="step-btn" id="btnIncWaitNope" type="button">+</button>
+              <span class="tool-unit">s</span>
+            </div>
+
+            <button class="tool-btn" id="btnClonePlayer" title="Sao chép từ bộ bài khác">
+              <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
+              <span>Nhân bản</span>
+            </button>
+
+            <button class="tool-btn tool-btn-danger" id="btnDeletePlayer" title="Dọn rác / Làm rỗng toàn bộ lá bài trong bộ này">
+              <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Row 2: Filter Chips & Search (No horizontal scrollbar) -->
+        <div class="filter-row">
+          <div class="filter-chips" id="filterCategories">
+            <button class="filter-pill active" data-filter="all" type="button">Tất cả (<span id="countAll">0</span>)</button>
+            <button class="filter-pill pill-deck" data-filter="in-deck" type="button">Trong bộ (<span id="countInDeck">0</span>)</button>
+            <button class="filter-pill pill-bomb" data-filter="bomb-defuse" type="button">Bom & Gỡ</button>
+            <button class="filter-pill pill-attack" data-filter="attack" type="button">Tấn Công</button>
+            <button class="filter-pill pill-protect" data-filter="protect" type="button">Bảo Vệ</button>
+            <button class="filter-pill pill-safe" data-filter="safe" type="button">An Toàn</button>
+            <button class="filter-pill pill-tactical" data-filter="tactical" type="button">Chiến Thuật</button>
+            <button class="filter-pill pill-super" data-filter="super" type="button">Super</button>
+            <button class="filter-pill pill-vanilla" data-filter="vanilla" type="button">Mèo Thường</button>
+          </div>
+
+          <div class="search-box">
+            <svg class="search-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+            <input type="text" id="inputSearchCards" placeholder="Tìm kiếm lá bài...">
+            <button id="btnClearSearch" class="search-clear" type="button">&times;</button>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Spacious High-Density Card Grid Canvas -->
+      <div class="card-grid-scroll">
+        <div class="cards-grid" id="cardGrid">
+          <!-- Rendered dynamically -->
+        </div>
+      </div>
+
+    </section>
+
+    <!-- RIGHT WORKSPACE: Clean Minimal Live JSON Editor -->
+    <aside class="studio-right">
+      <div class="editor-header">
+        <div class="editor-title">
+          <span class="live-indicator"></span>
+          <span class="editor-badge" id="jsonCurrentPlayerBadge">Deck 2P</span>
+        </div>
+        <div class="editor-actions">
+          <button class="btn-editor-action" id="btnFormatJson" title="Format code" type="button">
+            <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 6h16M4 12h10M4 18h14"/></svg>
+            <span>Format</span>
+          </button>
+          <button class="btn-editor-action" id="btnCopyJson" title="Copy JSON" type="button">
+            <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"/></svg>
+            <span>Copy</span>
+          </button>
+          <button class="btn-apply" id="btnApplyJson" title="Áp dụng JSON sang giao diện" type="button">
+            Áp Dụng
+          </button>
+        </div>
+      </div>
+
+      <div class="editor-body">
+        <div class="code-editor-container">
+          <pre id="jsonHighlight" class="code-highlight" aria-hidden="true"><code id="jsonHighlightCode"></code></pre>
+          <textarea class="code-textarea" id="jsonEditor" spellcheck="false" placeholder="JSON data..."></textarea>
+        </div>
+      </div>
+
+      <div class="editor-footer">
+        <span class="sync-status">Đồng bộ thời gian thực</span>
+        <span class="byte-count" id="jsonCharCount">0 bytes</span>
+      </div>
+    </aside>
+
+  </main>
+
+  <!-- Modal: Quản Lý Danh Mục Lá Bài (_CARD_IDS & _CARD_TAGS) -->
+  <div class="modal-backdrop" id="dbModal">
+    <div class="modal-box modal-lg">
+      <div class="modal-header">
+        <div class="modal-title-wrap">
+          <h2 class="modal-title">Quản Lý Danh Mục & Nhãn Phân Loại</h2>
+          <p class="modal-desc">Tùy chỉnh tên hiển thị và gắn/bỏ các nhãn phân loại (Bom, Gỡ Bom, Tấn Công, Bảo Vệ, Chiến Thuật...) cho từng lá bài.</p>
+        </div>
+        <button class="modal-close-btn" id="btnCloseDbModal" type="button">&times;</button>
+      </div>
+
+      <div class="modal-body">
+        <div class="modal-actions-row" style="display: flex; align-items: center; justify-content: space-between; gap: 8px; flex-wrap: wrap;">
+          <div class="search-box" style="max-width: 240px; flex: 1;">
+            <svg class="search-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+            <input type="text" id="inputSearchDbCards" placeholder="Tìm lá bài trong danh mục...">
+          </div>
+          <button class="btn-modal-add" id="btnAddNewCardId" type="button">
+            + Thêm lá bài mới
+          </button>
+        </div>
+
+        <div class="db-cards-scroll">
+          <div class="db-grid" id="dbCardsGrid">
+            <!-- Dynamic card rows with tag chips -->
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button class="btn-modal-cancel" id="btnCloseDbModalFooter" onclick="closeDbModal()" type="button">Đóng</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal: Nhân Bản Cấu Hình -->
+  <div class="modal-backdrop" id="cloneModal">
+    <div class="modal-box">
+      <div class="modal-header">
+        <h2 class="modal-title">Nhân Bản Cấu Hình Deck</h2>
+        <button class="modal-close-btn" id="btnCloseCloneModal" type="button">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p class="modal-desc">Chọn số người chơi nguồn để sao chép danh sách lá bài:</p>
+        <div class="form-group">
+          <label class="form-label">Số người chơi nguồn:</label>
+          <select id="selectSourcePlayer" class="form-select">
+            <!-- Options rendered dynamically -->
+          </select>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn-modal-cancel" id="btnCloseCloneModalFooter" onclick="closeCloneModal()" type="button">Hủy</button>
+        <button class="btn-modal-confirm" id="btnConfirmClone" type="button">Xác nhận sao chép</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal: Thêm Lá Bài Mới Vào Danh Mục -->
+  <div class="modal-backdrop" id="addCardIdModal">
+    <div class="modal-box">
+      <div class="modal-header">
+        <h2 class="modal-title">Thêm Lá Bài Mới</h2>
+        <button class="modal-close-btn" id="btnCloseAddCardModal" type="button">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label class="form-label">Mã ID (chữ thường không dấu):</label>
+          <input type="text" id="inputNewCardId" placeholder="ví dụ: magic_wand" class="form-input font-mono">
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Tên hiển thị tiếng Việt:</label>
+          <input type="text" id="inputNewCardName" placeholder="ví dụ: Đũa Phép Thuật" class="form-input">
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Gắn nhãn phân loại ban đầu:</label>
+          <div class="db-tag-chips-wrap" id="newCardTagChips">
+            <!-- Rendered dynamically -->
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn-modal-cancel" id="btnCloseAddCardModalFooter" onclick="closeAddCardIdModal()" type="button">Hủy</button>
+        <button class="btn-modal-confirm" id="btnConfirmAddCardId" type="button">Thêm lá bài</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Container -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <script src="app.js?v=15"></script>
+</body>
+</html>
