@@ -1,0 +1,10 @@
+{
+  "id": "chest",
+  "name": "Rương thưởng",
+  "guide": "Tích điểm qua mỗi lượt chuyển giao trong trận. Đánh ra để mở rương và nhận số lượng lá bài thưởng ngẫu nhiên tương ứng với mốc điểm tích lũy được.",
+  "count": 0,
+  "priority": 15,
+  "deck_types": [
+    "custom"
+  ]
+}

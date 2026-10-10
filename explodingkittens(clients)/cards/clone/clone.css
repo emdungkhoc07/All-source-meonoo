@@ -1,0 +1,25 @@
+/* UI lá bài Clone (id: clone) - GIAO DIỆN FULL ẢNH */
+.card-clone {
+    background-color: white !important;
+    background-size: 100% 100% !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    box-shadow: -4px 2px 10px rgba(0, 0, 0, 0.5) !important;
+    border: none !important;
+    overflow: hidden !important;
+}
+
+.card-clone * {
+    display: none !important;
+}
+
+.card-clone::after,
+.card-clone::before {
+    display: none !important;
+    background-image: none !important;
+    content: none !important;
+}
+
+.card-clone.clone-art-1 { background-image: url('art/1.png') !important; }
+.card-clone.clone-art-2 { background-image: url('art/2.png') !important; }
+.card-clone.clone-art-3 { background-image: url('art/3.png') !important; }

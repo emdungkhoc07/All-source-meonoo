@@ -1,0 +1,30 @@
+/* UI lá bài Nhìn Trước Tương Lai (id: nhintruoctuonglai) - GIAO DIỆN FULL ẢNH */
+.card-nhintruoctuonglai {
+    background-color: white !important; /* Thẻ bài trắng nền tảng */
+    background-size: 100% 100% !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    box-shadow: -4px 2px 10px rgba(0, 0, 0, 0.5) !important; /* Giữ lại bóng đổ bên ngoài */
+    border: none !important;
+    overflow: hidden !important; /* Đảm bảo hình không bị tràn ra ngoài góc bo */
+}
+
+/* Xóa tận gốc tất cả các thành phần UI, CSS con bên trong */
+.card-nhintruoctuonglai * {
+    display: none !important;
+}
+
+/* Xóa bỏ mọi bóng đổ, gradient hay ảnh con được vẽ bằng pseudo-elements */
+.card-nhintruoctuonglai::after,
+.card-nhintruoctuonglai::before {
+    display: none !important;
+    background-image: none !important;
+    content: none !important;
+}
+
+/* Gắn trực tiếp ảnh nền đè lên thẻ bài */
+/* Sử dụng 4 bức ảnh trong thư mục art/ */
+.card-nhintruoctuonglai.nhintruoctuonglai-art-1 { background-image: url('art/1.png') !important; }
+.card-nhintruoctuonglai.nhintruoctuonglai-art-2 { background-image: url('art/2.png') !important; }
+.card-nhintruoctuonglai.nhintruoctuonglai-art-3 { background-image: url('art/3.png') !important; }
+.card-nhintruoctuonglai.nhintruoctuonglai-art-4 { background-image: url('art/4.png') !important; }

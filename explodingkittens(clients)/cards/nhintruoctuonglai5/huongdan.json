@@ -1,0 +1,8 @@
+{
+    "id": "nhintruoctuonglai5",
+    "name": "See The Future 5",
+    "guide": "Bí mật xem trước 5 lá bài trên cùng của bộ nọc.",
+    "count": 0,
+    "priority": 14,
+    "deck_types": ["custom"]
+}

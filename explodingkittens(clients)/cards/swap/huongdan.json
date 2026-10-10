@@ -1,0 +1,10 @@
+{
+    "id": "swap",
+    "name": "Hoán Đổi",
+    "guide": "Hoán đổi vị trí của lá bài trên đỉnh và lá bài dưới đáy của cọc bài rút.",
+    "count": 0,
+    "priority": 14,
+    "deck_types": [
+        "custom"
+    ]
+}

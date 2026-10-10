@@ -1,0 +1,546 @@
+{
+  "2": {
+    "waitNope": 3,
+    "deck": {
+      "exploding_kitten": 2,
+      "defuse": 3,
+      "nope": 2,
+      "nhintruoctuonglai": 2,
+      "xaobai": 2,
+      "tancong": 1,
+      "skip": 2,
+      "favor": 1,
+      "tacocat": 3,
+      "zombiecat": 3,
+      "rainbowcat": 3
+    }
+  },
+  "3": {
+    "waitNope": 3,
+    "deck": {
+      "exploding_kitten": 3,
+      "defuse": 4,
+      "nope": 3,
+      "nhintruoctuonglai": 3,
+      "xaobai": 2,
+      "tancong": 2,
+      "skip": 3,
+      "favor": 2,
+      "tacocat": 4,
+      "zombiecat": 4,
+      "rainbowcat": 3,
+      "catermelon": 3
+    }
+  },
+  "4": {
+    "waitNope": 3,
+    "deck": {
+      "exploding_kitten": 4,
+      "defuse": 6,
+      "nope": 2,
+      "nhintruoctuonglai": 2,
+      "nhintruoctuonglai1": 1,
+      "xaobai": 2,
+      "tancong": 2,
+      "skip": 2,
+      "favor": 2,
+      "tacocat": 5,
+      "rainbowcat": 4,
+      "catermelon": 4,
+      "potatocat": 5,
+      "drawbottom": 1,
+      "swap": 1,
+      "nhintruoctuonglai5": 1,
+      "everywhere": 1,
+      "clone": 1,
+      "supernope": 1,
+      "contrast": 1
+    }
+  },
+  "5": {
+    "waitNope": 3,
+    "deck": {
+      "exploding_kitten": 5,
+      "defuse": 7,
+      "nope": 3,
+      "nhintruoctuonglai": 2,
+      "xaobai": 2,
+      "tancong": 1,
+      "skip": 2,
+      "favor": 2,
+      "clone": 1,
+      "drawbottom": 1,
+      "whatcat": 1,
+      "theend": 1,
+      "locking": 1,
+      "inferno": 1,
+      "contrast": 1,
+      "freeze": 1,
+      "swap": 1,
+      "tacocat": 5,
+      "zombiecat": 5,
+      "rainbowcat": 4,
+      "catermelon": 4,
+      "potatocat": 4,
+      "supernope": 1,
+      "nhintruoctuonglai1": 1,
+      "nhintruoctuonglai5": 1,
+      "afterthefuture": 1,
+      "everywhere": 1
+    }
+  },
+  "6": {
+    "waitNope": 2,
+    "deck": {
+      "exploding_kitten": 5,
+      "streaking": 1,
+      "defuse": 8,
+      "nope": 3,
+      "nhintruoctuonglai": 2,
+      "nhintruoctuonglai1": 1,
+      "afterthefuture": 1,
+      "xaobai": 2,
+      "tancong": 1,
+      "skip": 2,
+      "favor": 2,
+      "clone": 1,
+      "drawbottom": 1,
+      "whatcat": 2,
+      "theend": 1,
+      "locking": 1,
+      "slap2": 1,
+      "inferno": 1,
+      "contrast": 1,
+      "freeze": 1,
+      "swap": 1,
+      "switch": 1,
+      "garbage_collection": 1,
+      "tacocat": 5,
+      "rainbowcat": 5,
+      "catermelon": 5,
+      "potatocat": 5,
+      "golemcat": 5,
+      "super_exploding_kitten": 1,
+      "supernope": 2,
+      "nhintruoctuonglai5": 1,
+      "afterthefuture5": 1,
+      "everywhere": 1
+    }
+  },
+  "7": {
+    "waitNope": 3,
+    "deck": {
+      "exploding_kitten": 6,
+      "atomicbom": 1,
+      "streaking": 1,
+      "defuse": 9,
+      "nope": 3,
+      "nhintruoctuonglai": 2,
+      "nhintruoctuonglai1": 2,
+      "nhintruoctuonglai5": 1,
+      "afterthefuture": 1,
+      "xaobai": 2,
+      "tancong": 1,
+      "skip": 2,
+      "favor": 2,
+      "clone": 1,
+      "drawbottom": 1,
+      "everywhere": 1,
+      "whatcat": 3,
+      "theend": 1,
+      "locking": 1,
+      "slap": 1,
+      "slap2": 1,
+      "inferno": 1,
+      "contrast": 2,
+      "freeze": 1,
+      "swap": 1,
+      "switch": 1,
+      "seetheothers": 1,
+      "garbage_collection": 1,
+      "tacocat": 5,
+      "rainbowcat": 5,
+      "catermelon": 5,
+      "potatocat": 5,
+      "golemcat": 5,
+      "super_exploding_kitten": 1,
+      "supernope": 2,
+      "afterthefuture5": 1,
+      "superskip": 1,
+      "superfavor": 1,
+      "cattea": 5,
+      "locking5": 1
+    }
+  },
+  "8": {
+    "waitNope": 3,
+    "deck": {
+      "exploding_kitten": 7,
+      "super_exploding_kitten": 1,
+      "atomicbom": 1,
+      "streaking": 1,
+      "defuse": 10,
+      "nope": 4,
+      "supernope": 2,
+      "nhintruoctuonglai": 2,
+      "nhintruoctuonglai1": 2,
+      "nhintruoctuonglai5": 1,
+      "afterthefuture": 1,
+      "afterthefuture5": 1,
+      "xaobai": 2,
+      "tancong": 1,
+      "skip": 2,
+      "superskip": 1,
+      "favor": 2,
+      "superfavor": 1,
+      "clone": 1,
+      "drawbottom": 1,
+      "everywhere": 1,
+      "whatcat": 2,
+      "theend": 1,
+      "locking": 1,
+      "locking5": 1,
+      "slap": 1,
+      "slap2": 1,
+      "slap3": 1,
+      "inferno": 1,
+      "inferno4": 1,
+      "contrast": 2,
+      "freeze": 1,
+      "swap": 1,
+      "reverse": 2,
+      "switch": 1,
+      "chest": 1,
+      "seetheothers": 1,
+      "tacocat": 5,
+      "zombiecat": 5,
+      "rainbowcat": 5,
+      "catermelon": 5,
+      "potatocat": 5,
+      "golemcat": 5,
+      "cattea": 5,
+      "garbage_collection": 1
+    }
+  },
+  "9": {
+    "waitNope": 3,
+    "deck": {
+      "exploding_kitten": 8,
+      "super_exploding_kitten": 1,
+      "atomicbom": 1,
+      "streaking": 1,
+      "defuse": 11,
+      "nope": 5,
+      "supernope": 2,
+      "nhintruoctuonglai": 2,
+      "nhintruoctuonglai1": 2,
+      "nhintruoctuonglai5": 1,
+      "afterthefuture": 2,
+      "afterthefuture5": 1,
+      "xaobai": 2,
+      "tancong": 1,
+      "skip": 3,
+      "superskip": 1,
+      "favor": 2,
+      "superfavor": 1,
+      "clone": 2,
+      "drawbottom": 2,
+      "everywhere": 1,
+      "whatcat": 2,
+      "theend": 1,
+      "locking": 1,
+      "locking5": 1,
+      "slap": 1,
+      "slap2": 1,
+      "slap3": 1,
+      "inferno": 1,
+      "inferno4": 1,
+      "contrast": 2,
+      "freeze": 1,
+      "swap": 1,
+      "reverse": 2,
+      "switch": 1,
+      "chest": 1,
+      "seetheothers": 1,
+      "garbage_collection": 1,
+      "tacocat": 6,
+      "zombiecat": 6,
+      "rainbowcat": 6,
+      "catermelon": 6,
+      "potatocat": 6,
+      "golemcat": 5,
+      "cattea": 5
+    }
+  },
+  "10": {
+    "waitNope": 3,
+    "deck": {
+      "exploding_kitten": 10,
+      "super_exploding_kitten": 1,
+      "streaking": 2,
+      "defuse": 13,
+      "nope": 4,
+      "supernope": 2,
+      "nhintruoctuonglai": 3,
+      "nhintruoctuonglai1": 2,
+      "nhintruoctuonglai5": 1,
+      "afterthefuture": 2,
+      "afterthefuture5": 1,
+      "xaobai": 2,
+      "tancong": 1,
+      "skip": 2,
+      "superskip": 1,
+      "favor": 3,
+      "superfavor": 1,
+      "clone": 2,
+      "drawbottom": 2,
+      "everywhere": 2,
+      "whatcat": 2,
+      "theend": 1,
+      "locking": 2,
+      "locking5": 1,
+      "slap": 1,
+      "slap2": 2,
+      "slap3": 1,
+      "inferno": 2,
+      "inferno4": 1,
+      "contrast": 3,
+      "freeze": 1,
+      "swap": 2,
+      "reverse": 2,
+      "switch": 1,
+      "chest": 1,
+      "seetheothers": 1,
+      "garbage_collection": 1,
+      "tacocat": 6,
+      "zombiecat": 5,
+      "rainbowcat": 6,
+      "catermelon": 6,
+      "potatocat": 6,
+      "golemcat": 5,
+      "cattea": 6,
+      "vampirecat": 5,
+      "atomicbom": 1
+    }
+  },
+  "_CARD_IDS": {
+    "defuse": "Defuse",
+    "exploding_kitten": "Mèo Cảm Tử",
+    "super_exploding_kitten": "Siêu Mèo Cảm Tử",
+    "atomicbom": "Bom nguyên tử",
+    "nope": "Nope",
+    "supernope": "Super Nope",
+    "nhintruoctuonglai1": "Nhìn Trước 1 Lá",
+    "nhintruoctuonglai": "Nhìn Trước 3 Lá",
+    "nhintruoctuonglai5": "Nhìn Trước 5 Lá",
+    "afterthefuture": "Can thiệp tương lai 3 Lá",
+    "afterthefuture5": "Can thiệp tương lai 5 Lá",
+    "xaobai": "Xáo Bài",
+    "tancong": "Tấn Công",
+    "skip": "Bỏ Lượt",
+    "superskip": "Siêu Bỏ Lượt",
+    "favor": "Xin Bài",
+    "superfavor": "Super Favor",
+    "clone": "Sao Chép",
+    "streaking": "Mèo Ôm Bom",
+    "drawbottom": "Rút Dưới Đáy",
+    "everywhere": "Ở Khắp Mọi Nơi",
+    "whatcat": "Mèo Gì Đây",
+    "tacocat": "Mèo Taco",
+    "zombiecat": "Mèo Zombie",
+    "rainbowcat": "Mèo Cầu Vồng",
+    "catermelon": "Mèo Dưa Hấu",
+    "potatocat": "Mèo Khoai Tây",
+    "golemcat": "Mèo Golem",
+    "cattea": "Mèo Trà",
+    "vampirecat": "Mèo Ma Cà Rồng",
+    "theend": "The End",
+    "locking": "Khóa Bài",
+    "locking5": "Khóa 5 Lá",
+    "slap": "Slap",
+    "slap2": "Slap x2",
+    "slap3": "Slap x3",
+    "inferno": "Thiêu Cháy 2",
+    "inferno4": "Thiêu Cháy 4",
+    "contrast": "Đảo Nghịch",
+    "freeze": "Đóng Băng",
+    "swap": "Hoán Đổi",
+    "reverse": "Đổi Chiều",
+    "switch": "Switch",
+    "chest": "Rương thưởng",
+    "seetheothers": "Nhìn bài",
+    "garbage_collection": "Dọn rác"
+  },
+  "_CARD_TAGS": {
+    "defuse": [
+      "DEFUSE",
+      "SAFE"
+    ],
+    "exploding_kitten": [
+      "BOMBS"
+    ],
+    "super_exploding_kitten": [
+      "BOMBS",
+      "SUPER"
+    ],
+    "atomicbom": [
+      "BOMBS"
+    ],
+    "nope": [
+      "PROTECT"
+    ],
+    "supernope": [
+      "PROTECT",
+      "SUPER"
+    ],
+    "nhintruoctuonglai1": [
+      "TACTICAL"
+    ],
+    "nhintruoctuonglai": [
+      "TACTICAL"
+    ],
+    "nhintruoctuonglai5": [
+      "TACTICAL",
+      "SUPER"
+    ],
+    "afterthefuture": [
+      "TACTICAL",
+      "SAFE"
+    ],
+    "afterthefuture5": [
+      "TACTICAL",
+      "SAFE",
+      "SUPER"
+    ],
+    "xaobai": [
+      "TACTICAL"
+    ],
+    "tancong": [
+      "ATTACK",
+      "SAFE"
+    ],
+    "skip": [
+      "SAFE"
+    ],
+    "superskip": [
+      "SAFE",
+      "SUPER"
+    ],
+    "favor": [
+      "ATTACK"
+    ],
+    "superfavor": [
+      "ATTACK",
+      "SUPER"
+    ],
+    "clone": [
+      "TACTICAL"
+    ],
+    "streaking": [
+      "SAFE",
+      "DEFUSE"
+    ],
+    "drawbottom": [
+      "SAFE"
+    ],
+    "everywhere": [
+      "SAFE"
+    ],
+    "whatcat": [
+      "TACTICAL",
+      "VANILLA",
+      "ATTACK"
+    ],
+    "tacocat": [
+      "VANILLA",
+      "ATTACK"
+    ],
+    "zombiecat": [
+      "VANILLA",
+      "ATTACK"
+    ],
+    "rainbowcat": [
+      "VANILLA",
+      "ATTACK"
+    ],
+    "catermelon": [
+      "VANILLA",
+      "ATTACK"
+    ],
+    "potatocat": [
+      "VANILLA",
+      "ATTACK"
+    ],
+    "golemcat": [
+      "VANILLA",
+      "ATTACK"
+    ],
+    "cattea": [
+      "VANILLA",
+      "ATTACK"
+    ],
+    "vampirecat": [
+      "VANILLA",
+      "ATTACK"
+    ],
+    "theend": [
+      "TACTICAL"
+    ],
+    "locking": [
+      "ATTACK",
+      "TACTICAL"
+    ],
+    "locking5": [
+      "ATTACK",
+      "SUPER",
+      "TACTICAL"
+    ],
+    "slap": [
+      "ATTACK",
+      "SAFE"
+    ],
+    "slap2": [
+      "ATTACK",
+      "TACTICAL",
+      "SAFE"
+    ],
+    "slap3": [
+      "ATTACK",
+      "SUPER",
+      "TACTICAL",
+      "SAFE"
+    ],
+    "inferno": [
+      "ATTACK"
+    ],
+    "inferno4": [
+      "ATTACK",
+      "SUPER"
+    ],
+    "contrast": [
+      "PROTECT"
+    ],
+    "freeze": [
+      "SAFE"
+    ],
+    "swap": [
+      "TACTICAL",
+      "SAFE"
+    ],
+    "reverse": [
+      "SAFE"
+    ],
+    "switch": [
+      "ATTACK"
+    ],
+    "chest": [
+      "TACTICAL"
+    ],
+    "seetheothers": [
+      "TACTICAL"
+    ],
+    "garbage_collection": [
+      "ATTACK"
+    ]
+  }
+}

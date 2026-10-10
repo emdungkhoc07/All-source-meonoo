@@ -1,0 +1,28 @@
+/* UI lá bài Everywhere (id: everywhere) - GIAO DIỆN FULL ẢNH */
+.card-everywhere {
+    background-color: white !important;
+    background-size: 100% 100% !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    box-shadow: -4px 2px 10px rgba(0, 0, 0, 0.5) !important;
+    border: none !important;
+    overflow: hidden !important;
+}
+
+/* Xóa tận gốc tất cả các thành phần UI, CSS con bên trong */
+.card-everywhere * {
+    display: none !important;
+}
+
+/* Xóa bỏ mọi bóng đổ, gradient hay ảnh con được vẽ bằng pseudo-elements */
+.card-everywhere::after,
+.card-everywhere::before {
+    display: none !important;
+    background-image: none !important;
+    content: none !important;
+}
+
+/* Gắn trực tiếp ảnh nền đè lên thẻ bài */
+.card-everywhere.everywhere-art-1 { background-image: url('art/1.png') !important; }
+.card-everywhere.everywhere-art-2 { background-image: url('art/2.png') !important; }
+.card-everywhere.everywhere-art-3 { background-image: url('art/3.png') !important; }

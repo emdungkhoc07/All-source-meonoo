@@ -1,0 +1,23 @@
+/* UI lá bài Super Nope (id: supernope) - GIAO DIỆN FULL ẢNH */
+.card-supernope {
+    background-color: white !important;
+    background-size: 100% 100% !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    box-shadow: -4px 2px 10px rgba(0, 0, 0, 0.5) !important;
+    border: none !important;
+    overflow: hidden !important;
+}
+
+.card-supernope * {
+    display: none !important;
+}
+
+.card-supernope::after,
+.card-supernope::before {
+    display: none !important;
+    background-image: none !important;
+    content: none !important;
+}
+
+.card-supernope.supernope-art-1 { background-image: url('art/1.png') !important; }

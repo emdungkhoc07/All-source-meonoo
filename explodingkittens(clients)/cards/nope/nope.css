@@ -1,0 +1,47 @@
+/* UI lá bài Nope (id: nope) - GIAO DIỆN FULL ẢNH */
+.card-nope {
+    background-color: white !important; /* Thẻ bài trắng nền tảng */
+    background-size: 100% 100% !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    box-shadow: -4px 2px 10px rgba(0, 0, 0, 0.5) !important; /* Giữ lại bóng đổ bên ngoài */
+    border: none !important;
+    overflow: hidden !important; /* Đảm bảo hình không bị tràn ra ngoài góc bo */
+}
+
+/* Xóa tận gốc tất cả các thành phần UI, CSS con bên trong */
+.card-nope * {
+    display: none !important;
+}
+
+/* Xóa bỏ mọi bóng đổ, gradient hay ảnh con được vẽ bằng pseudo-elements */
+.card-nope::after,
+.card-nope::before {
+    display: none !important;
+    background-image: none !important;
+    content: none !important;
+}
+
+/* Gắn trực tiếp ảnh nền đè lên thẻ bài */
+/* Sử dụng 5 bức ảnh trong thư mục art/ */
+.card-nope.nope-art-1 { background-image: url('art/1.png') !important; }
+.card-nope.nope-art-2 { background-image: url('art/2.png') !important; }
+.card-nope.nope-art-3 { background-image: url('art/3.png') !important; }
+.card-nope.nope-art-4 { background-image: url('art/4.png') !important; }
+.card-nope.nope-art-5 { background-image: url('art/5.png') !important; }
+
+/* ===== NÚT UI ĐẾM NGƯỢC NOPE? ===== */
+#nopeProgressContainer {
+    cursor: pointer !important;
+    user-select: none;
+    transition: transform 0.15s ease, filter 0.15s ease !important;
+}
+
+#nopeProgressContainer:hover {
+    transform: translateY(-50%) scale(1.1) !important;
+    filter: brightness(1.2);
+}
+
+#nopeProgressContainer:active {
+    transform: translateY(-50%) scale(0.95) !important;
+}

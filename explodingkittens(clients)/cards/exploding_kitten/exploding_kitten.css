@@ -1,0 +1,30 @@
+/* UI lá bài Exploding Kitten (id: exploding_kitten) - GIAO DIỆN FULL ẢNH */
+.card-exploding_kitten {
+    background-color: white !important; /* Thẻ bài trắng nền tảng */
+    background-size: 100% 100% !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    box-shadow: -4px 2px 10px rgba(0, 0, 0, 0.5) !important; /* Giữ lại bóng đổ bên ngoài */
+    border: none !important;
+    overflow: hidden !important; /* Đảm bảo hình không bị tràn ra ngoài góc bo */
+}
+
+/* Xóa tận gốc tất cả các thành phần UI, CSS con bên trong */
+.card-exploding_kitten * {
+    display: none !important;
+}
+
+/* Xóa bỏ mọi bóng đổ, gradient hay ảnh con được vẽ bằng pseudo-elements */
+.card-exploding_kitten::after,
+.card-exploding_kitten::before {
+    display: none !important;
+    background-image: none !important;
+    content: none !important;
+}
+
+/* Gắn trực tiếp ảnh nền đè lên thẻ bài */
+/* Sử dụng 4 bức ảnh trong thư mục art/ */
+.card-exploding_kitten.exploding_kitten-art-1 { background-image: url('art/1.png') !important; }
+.card-exploding_kitten.exploding_kitten-art-2 { background-image: url('art/2.png') !important; }
+.card-exploding_kitten.exploding_kitten-art-3 { background-image: url('art/3.png') !important; }
+.card-exploding_kitten.exploding_kitten-art-4 { background-image: url('art/4.png') !important; }

@@ -1,0 +1,8 @@
+{
+    "id": "drawbottom",
+    "name": "Draw Bottom",
+    "guide": "Kết thúc lượt của bạn bằng cách rút 1 lá bài ở DƯỚI CÙNG của chồng bài rút thay vì rút lá trên cùng.",
+    "count": 0,
+    "priority": 13,
+    "deck_types": ["custom"]
+}

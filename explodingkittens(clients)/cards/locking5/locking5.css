@@ -1,0 +1,25 @@
+/* UI lá bài Locking 5 (id: locking5) - GIAO DIỆN FULL ẢNH */
+.card-locking5 {
+    background-color: white !important;
+    background-size: 100% 100% !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    box-shadow: -4px 2px 10px rgba(0, 0, 0, 0.5) !important;
+    border: none !important;
+    overflow: hidden !important;
+}
+
+.card-locking5 * {
+    display: none !important;
+}
+
+.card-locking5::after,
+.card-locking5::before {
+    display: none !important;
+    background-image: none !important;
+    content: none !important;
+}
+
+.card-locking5,
+.card-locking5.locking5-art-1,
+.card-locking5.locking-art-1 { background-image: url('art/1.png') !important; }

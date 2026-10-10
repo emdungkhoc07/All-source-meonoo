@@ -1,0 +1,32 @@
+.card-contrast {
+    background-color: white !important;
+    background-size: 100% 100% !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    box-shadow: -4px 2px 10px rgba(0, 0, 0, 0.5) !important;
+    border: none !important;
+    overflow: hidden !important;
+    transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.25s ease !important;
+}
+
+.card-contrast * {
+    display: none !important;
+}
+
+.card-contrast::after,
+.card-contrast::before {
+    display: none !important;
+    background-image: none !important;
+    content: none !important;
+}
+
+.card-contrast,
+.card-contrast.contrast-art-1 { background-image: url('art/1.png') !important; }
+
+/* Trạng thái ON: Nhô cao lên + Hào quang phát sáng màu vàng rực rỡ */
+.card-contrast.contrast-on {
+    transform: translateY(-26px) scale(1.05) !important;
+    box-shadow: 0 0 15px #f59e0b, 0 0 30px #fbbf24, 0 0 45px #eab308, -4px 2px 10px rgba(0, 0, 0, 0.5) !important;
+    border: 2px solid #fbbf24 !important;
+    z-index: 9999 !important;
+}

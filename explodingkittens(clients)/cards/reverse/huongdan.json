@@ -1,0 +1,10 @@
+{
+    "id": "reverse",
+    "name": "Đổi Chiều",
+    "guide": "Đảo ngược thứ tự lượt đi của trận đấu và kết thúc 1 lượt bốc bài của bản thân.",
+    "count": 0,
+    "priority": 15,
+    "deck_types": [
+        "custom"
+    ]
+}

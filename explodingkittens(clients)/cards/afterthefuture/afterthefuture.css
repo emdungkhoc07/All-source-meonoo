@@ -1,0 +1,23 @@
+/* Ẩn giao diện mặc định của thẻ */
+.card-afterthefuture {
+    background-color: transparent !important;
+    border: none !important;
+    background-image: none !important;
+    box-shadow: -4px 2px 10px rgba(0, 0, 0, 0.5) !important;
+}
+
+.card-afterthefuture .card-title,
+.card-afterthefuture .card-icon,
+.card-afterthefuture .card-bottom-icon,
+.card-afterthefuture .card-desc,
+.afterthefuture-corner-title {
+    display: none !important;
+}
+
+/* Gắn trực tiếp ảnh nền đè lên thẻ bài */
+.card-afterthefuture {
+    background-image: url('art/1.png') !important;
+    background-size: 100% 100% !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+}

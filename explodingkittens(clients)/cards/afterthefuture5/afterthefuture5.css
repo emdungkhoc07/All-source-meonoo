@@ -1,0 +1,22 @@
+/* UI lá bài Can Thiệp Tương Lai 5 (id: afterthefuture5) - GIAO DIỆN FULL ẢNH */
+.card-afterthefuture5 {
+    background-color: transparent !important;
+    border: none !important;
+    background-image: none !important;
+    box-shadow: -4px 2px 10px rgba(0, 0, 0, 0.5) !important;
+}
+
+.card-afterthefuture5 .card-title,
+.card-afterthefuture5 .card-icon,
+.card-afterthefuture5 .card-bottom-icon,
+.card-afterthefuture5 .card-desc,
+.afterthefuture5-corner-title {
+    display: none !important;
+}
+
+.card-afterthefuture5 {
+    background-image: url('art/1.png') !important;
+    background-size: 100% 100% !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+}

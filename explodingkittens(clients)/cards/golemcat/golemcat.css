@@ -1,0 +1,23 @@
+/* UI lá bài Golemcat (id: golemcat) - GIAO DIỆN FULL ẢNH */
+.card-golemcat {
+    background-color: white !important;
+    background-size: 100% 100% !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    box-shadow: -4px 2px 10px rgba(0, 0, 0, 0.5) !important;
+    border: none !important;
+    overflow: hidden !important;
+}
+
+.card-golemcat * {
+    display: none !important;
+}
+
+.card-golemcat::after,
+.card-golemcat::before {
+    display: none !important;
+    background-image: none !important;
+    content: none !important;
+}
+
+.card-golemcat.golemcat-art-1 { background-image: url('art/1.png') !important; }

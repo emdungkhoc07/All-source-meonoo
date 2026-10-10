@@ -1,0 +1,8 @@
+{
+    "id": "everywhere",
+    "name": "Everywhere",
+    "guide": "Kết thúc lượt của bạn bằng cách lấy 1 lá bài NGẪU NHIÊN ở vị trí bất kì trong chồng bài rút.",
+    "count": 0,
+    "priority": 15,
+    "deck_types": ["custom"]
+}

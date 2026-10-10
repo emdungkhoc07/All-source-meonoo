@@ -1,0 +1,23 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    // 1. Khu vực dữ liệu người dùng: Cho phép người dùng đã đăng nhập đọc (leaderboard/rank/avatar), chỉ chính chủ mới được sửa
+    match /users/{userId} {
+      allow read: if request.auth != null;
+      allow write: if request.auth != null && request.auth.uid == userId;
+    }
+
+    // 2. Bộ bài chia sẻ trong mục Khám Phá (discovery_decks)
+    match /discovery_decks/{deckId} {
+      // Cho phép tất cả mọi người xem danh sách bộ bài
+      allow read: if true;
+      
+      // Cho phép người dùng đã đăng nhập đăng bài mới và thả tim/cập nhật lượt thích
+      allow create, update: if request.auth != null;
+
+      // Chỉ chính tác giả bộ bài đó mới được xóa
+      allow delete: if request.auth != null && resource.data.authorId == request.auth.uid;
+    }
+  }
+}

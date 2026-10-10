@@ -1,0 +1,129 @@
+/* UI lá bài Rương Thưởng (id: chest) - GIAO DIỆN FULL ẢNH */
+.card-chest {
+    background-color: white !important;
+    background-size: 100% 100% !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    box-shadow: -4px 2px 10px rgba(0, 0, 0, 0.5) !important;
+    border: none !important;
+    overflow: visible !important;
+}
+
+.card-chest [class*="-corner-title"] {
+    display: none !important;
+}
+
+.card-chest.chest-art-1 { background-image: url('art/1.png') !important; }
+
+/* Huy hiệu số điểm tích lũy của lá Rương thưởng: Hình tròn nền trắng không viền, số to */
+.chest-points-badge {
+    position: absolute !important;
+    top: -16px !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    width: 36px !important;
+    height: 36px !important;
+    min-width: 36px !important;
+    min-height: 36px !important;
+    border-radius: 50% !important;
+    background: #ffffff !important;
+    border: none !important;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4) !important;
+    font-family: 'Montserrat', 'Nunito', sans-serif, system-ui !important;
+    font-size: 23px !important;
+    font-weight: 900 !important;
+    line-height: 1 !important;
+    z-index: 100 !important;
+    pointer-events: none !important;
+    box-sizing: border-box !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+}
+
+.chest-points-val {
+    display: inline-block;
+    line-height: 1;
+    font-weight: 900;
+    color: #ea580c !important;
+    text-shadow: 0 0 6px rgba(234, 88, 12, 0.6);
+}
+
+/* Giao diện các lá bài mở ra từ Rương hiển thị trên bàn */
+.chest-reveal-card {
+    position: fixed !important;
+    z-index: 999999 !important;
+    pointer-events: none !important;
+    border-radius: 10px !important;
+    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.8) !important;
+    border: none !important;
+    will-change: transform, opacity, left, top;
+}
+
+/* ==========================================================================
+   HOẠT ẢNH MỞ RƯƠNG THƯỞNG: NỀN TỐI & NỔI BẬT AVATAR, BỘ BÀI VÀ LÁ THƯỞNG
+   ========================================================================== */
+.chest-darken-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.85);
+    z-index: 80000;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+
+.chest-darken-backdrop.show {
+    opacity: 1;
+}
+
+/* Hiệu ứng lá Rương phát ánh sáng cam rực rỡ khi mở - ĐỨNG YÊN HOÀN TOÀN, CHỈ PHÁT QUẦNG SÁNG CAM */
+.chest-glow-opening {
+    box-shadow: 0 0 35px 12px #f97316, 0 0 70px 25px #ea580c, 0 0 110px 40px rgba(251, 146, 60, 0.85), inset 0 0 15px rgba(255, 255, 255, 0.6) !important;
+    border: 2px solid rgba(254, 215, 170, 0.8) !important;
+    transform: none !important;
+}
+
+/* Nổi bật avatar các người chơi ở thanh trên */
+body.chest-darken-active .opponents-container,
+body.chest-darken-active .opponents-top-bar {
+    z-index: 85000 !important;
+}
+
+/* Nổi bật bộ bài trên tay của bản thân ở phía dưới */
+body.chest-darken-active .hand-wrapper {
+    z-index: 85000 !important;
+    position: relative !important;
+}
+
+.chest-reward-banner {
+    position: fixed;
+    top: calc(50% - 130px);
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.8);
+    background: linear-gradient(135deg, rgba(20, 15, 5, 0.95), rgba(40, 30, 10, 0.95));
+    border: 2px solid #eab308;
+    color: #fef08a;
+    padding: 8px 24px;
+    border-radius: 20px;
+    font-family: 'Montserrat', sans-serif, system-ui;
+    font-size: 15px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.8), 0 0 20px rgba(234, 179, 8, 0.6);
+    text-shadow: 0 2px 4px rgba(0,0,0,0.9), 0 0 10px rgba(234, 179, 8, 0.8);
+    z-index: 999998;
+    pointer-events: none;
+    opacity: 0;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.chest-reward-banner.show {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+}

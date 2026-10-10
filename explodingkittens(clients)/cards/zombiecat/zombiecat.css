@@ -1,0 +1,23 @@
+/* UI lá bài Zombiecat (id: zombiecat) - GIAO DIỆN FULL ẢNH */
+.card-zombiecat {
+    background-color: white !important;
+    background-size: 100% 100% !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    box-shadow: -4px 2px 10px rgba(0, 0, 0, 0.5) !important;
+    border: none !important;
+    overflow: hidden !important;
+}
+
+.card-zombiecat * {
+    display: none !important;
+}
+
+.card-zombiecat::after,
+.card-zombiecat::before {
+    display: none !important;
+    background-image: none !important;
+    content: none !important;
+}
+
+.card-zombiecat.zombiecat-art-1 { background-image: url('art/1.png') !important; }

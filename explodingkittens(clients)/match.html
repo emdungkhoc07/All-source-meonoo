@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover, interactive-widget=overlays-content">
+    <script>
+        // Tự động căn chỉnh scale ngay từ frame đầu tiên trong HEAD để chống FOUC / màn hình đen khi F5
+        (function() {
+            var W = 2340, H = 1080;
+            function getViewportSize() {
+                if (window.visualViewport && window.visualViewport.width > 0 && window.visualViewport.height > 0) {
+                    return {
+                        w: window.visualViewport.width,
+                        h: window.visualViewport.height
+                    };
+                }
+                return {
+                    w: window.innerWidth || (window.screen ? window.screen.width : 2340),
+                    h: window.innerHeight || (window.screen ? window.screen.height : 1080)
+                };
+            }
+            function applyFit() {
+                var size = getViewportSize();
+                var w = size.w || 2340, h = size.h || 1080;
+                if (w <= 0 || h <= 0) { w = 2340; h = 1080; }
+                var s = h / H;
+                if (W * s > w) s = w / W;
+                if (!s || s <= 0 || isNaN(s)) s = 1;
+                var ox = Math.round((w - W * s) / 2);
+                var oy = Math.round((h - H * s) / 2);
+                window._appScale = s;
+                window._appOffsetX = ox;
+                window._appOffsetY = oy;
+
+                var style = document.getElementById('instant-screen-fit');
+                if (!style) {
+                    style = document.createElement('style');
+                    style.id = 'instant-screen-fit';
+                    document.head.appendChild(style);
+                }
+                style.innerHTML = 'body { transform: translate(' + ox + 'px, ' + oy + 'px) scale(' + s + ') !important; transform-origin: 0 0 !important; }';
+                if (document.body) {
+                    document.body.style.transform = 'translate(' + ox + 'px, ' + oy + 'px) scale(' + s + ')';
+                    document.body.style.willChange = 'auto';
+                }
+            }
+            applyFit();
+            document.addEventListener('DOMContentLoaded', applyFit);
+            window.addEventListener('load', applyFit);
+            setTimeout(applyFit, 50);
+            setTimeout(applyFit, 300);
+            setTimeout(applyFit, 800);
+            if (window.visualViewport) {
+                window.visualViewport.addEventListener('resize', applyFit);
+            }
+        })();
+    </script>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-touch-fullscreen" content="yes">
+    <meta name="theme-color" content="#1a0506">
+    <title>Trận Đấu - ExplodingKitten</title>
+    <link rel="icon" type="image/png" href="assets/favicon/favicon.png">
+    <!-- Google Fonts for Modern Typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Nunito:wght@300;400;500;600;700;800;900&family=Be+Vietnam+Pro:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Link to External Stylesheet -->
+    <link rel="stylesheet" href="match.css?v=47">
+    <!-- Link to Custom Card Stylesheets -->
+    <link rel="stylesheet" href="cards/nhintruoctuonglai/nhintruoctuonglai.css?v=2">
+    <link rel="stylesheet" href="cards/nhintruoctuonglai1/nhintruoctuonglai1.css?v=2">
+    <link rel="stylesheet" href="cards/nhintruoctuonglai5/nhintruoctuonglai5.css?v=1">
+    <link rel="stylesheet" href="cards/everywhere/everywhere.css?v=1">
+    <link rel="stylesheet" href="cards/freeze/freeze.css">
+    <link rel="stylesheet" href="cards/whatcat/whatcat.css?v=5">
+    <link rel="stylesheet" href="cards/atomicbom/atomicbom.css?v=3">
+    <link rel="stylesheet" href="cards/afterthefuture/afterthefuture.css?v=1">
+    <link rel="stylesheet" href="cards/afterthefuture5/afterthefuture5.css?v=2">
+    <link rel="stylesheet" href="cards/theend/theend.css?v=1">
+    <link rel="stylesheet" href="cards/clone/clone.css?v=1">
+    <link rel="stylesheet" href="cards/defuse/defuse.css?v=2">
+    <link rel="stylesheet" href="cards/streaking/streaking.css?v=2">
+    <link rel="stylesheet" href="cards/drawbottom/drawbottom.css?v=2">
+    <link rel="stylesheet" href="cards/exploding_kitten/exploding_kitten.css?v=5">
+    <link rel="stylesheet" href="cards/tancong/tancong.css?v=2">
+    <link rel="stylesheet" href="cards/slap/slap.css?v=1">
+    <link rel="stylesheet" href="cards/slap2/slap2.css?v=1">
+    <link rel="stylesheet" href="cards/slap3/slap3.css?v=1">
+    <link rel="stylesheet" href="cards/inferno/inferno.css?v=1">
+    <link rel="stylesheet" href="cards/inferno4/inferno4.css?v=1">
+    <link rel="stylesheet" href="cards/contrast/contrast.css?v=1">
+    <link rel="stylesheet" href="cards/nope/nope.css?v=2">
+    <link rel="stylesheet" href="cards/supernope/supernope.css?v=1">
+    <link rel="stylesheet" href="cards/swap/swap.css?v=1">
+    <link rel="stylesheet" href="cards/reverse/reverse.css?v=1">
+    <link rel="stylesheet" href="cards/switch/switch.css?v=1">
+    <link rel="stylesheet" href="cards/chest/chest.css?v=10">
+    <link rel="stylesheet" href="cards/skip/skip.css?v=2">
+    <link rel="stylesheet" href="cards/superskip/superskip.css?v=2">
+    <link rel="stylesheet" href="cards/xaobai/xaobai.css?v=2">
+    <link rel="stylesheet" href="cards/favor/favor.css?v=2">
+    <link rel="stylesheet" href="cards/superfavor/superfavor.css?v=1">
+    <link rel="stylesheet" href="cards/super_exploding_kitten/super_exploding_kitten.css?v=1">
+    <link rel="stylesheet" href="cards/seetheothers/seetheothers.css?v=1">
+    <link rel="stylesheet" href="cards/garbage_collection/garbage_collection.css?v=1">
+    <link rel="stylesheet" href="cards/tacocat/tacocat.css?v=2">
+    <link rel="stylesheet" href="cards/zombiecat/zombiecat.css?v=2">
+    <link rel="stylesheet" href="cards/rainbowcat/rainbowcat.css?v=2">
+    <link rel="stylesheet" href="cards/catermelon/catermelon.css?v=2">
+    <link rel="stylesheet" href="cards/potatocat/potatocat.css?v=2">
+    <link rel="stylesheet" href="cards/golemcat/golemcat.css?v=1">
+    <link rel="stylesheet" href="cards/cattea/cattea.css?v=1">
+    <link rel="stylesheet" href="cards/vampirecat/vampirecat.css?v=1">
+    <link rel="stylesheet" href="cards/locking/locking.css?v=1">
+    <link rel="stylesheet" href="cards/locking5/locking5.css?v=2">
+    <script>
+        window.onerror = function(msg, url, line, col, error) {
+            fetch('/log_error?msg=' + encodeURIComponent(msg + ' at ' + line + ':' + col + ' ' + (error ? error.stack : '')));
+            return false;
+        };
+        window.addEventListener('unhandledrejection', function(event) {
+            fetch('/log_error?msg=' + encodeURIComponent('Unhandled Rejection: ' + event.reason));
+        });
+    </script>
+</head>
+<body id="matchPage">
+    <!-- Nút Cài Đặt và Menu Bị Xóa Nhầm -->
+    <button class="btn-settings-topright" id="btnSettings">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+    </button>
+    <div id="toggleMenuIcon" style="display:none;"></div>
+    
+    <!-- Opponents Top Bar -->
+    <div class="opponents-container">
+        <div class="opponents-top-bar" id="opponentsTopBar"></div>
+    </div>
+    
+    <!-- Main Game Arena -->
+    <main class="arena">
+        <!-- Center Deck -->
+        <div class="center-deck-container" id="centerDeck">
+            <div class="deck-stack" id="deckStackElem">
+                <div class="deck-layer top-card"></div>
+                <div class="deck-count-circle" id="deckCountVal"></div>
+            </div>
+        </div>
+
+        <!-- Discard Pile -->
+        <div class="discard-container" style="position: relative;">
+            <div id="nopeProgressContainer" style="display: none; position: absolute; top: 50%; right: -280px; transform: translateY(-50%); width: 240px; height: 240px; z-index: 100;">
+                <svg width="240" height="240" viewBox="0 0 240 240" style="position: absolute; top: 0; left: 0; cursor: pointer; filter: drop-shadow(0 6px 16px rgba(0, 0, 0, 0.7));">
+                    <!-- Vòng nền đen -->
+                    <circle cx="120" cy="120" r="104" fill="rgba(0,0,0,0.85)" stroke="#3f3f46" stroke-width="14" />
+                    <!-- Vòng tiến trình đỏ -->
+                    <circle id="nopeProgressCircle" cx="120" cy="120" r="104" fill="none" stroke="#ef4444" stroke-width="14" stroke-linecap="round" stroke-dasharray="653.45" stroke-dashoffset="0" transform="rotate(-90 120 120)" style="transition: stroke-dashoffset linear;" />
+                </svg>
+                <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; font-family: 'Be Vietnam Pro', sans-serif; font-weight: 900; color: white; font-size: 48px; text-shadow: -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000, 0 4px 10px rgba(0,0,0,0.8); z-index: 2; pointer-events: none;">NOPE?</div>
+            </div>
+            <div class="discard-pile" id="discardPile"></div>
+        </div>
+    </main>
+
+    <!-- Bottom Player Hand Container -->
+    <footer class="hand-wrapper">
+        <button class="btn-scroll-hand hidden" id="btnScrollLeft">&lt;</button>
+        <div class="hand-container" id="handContainer"></div>
+        <button class="btn-scroll-hand hidden" id="btnScrollRight">&gt;</button>
+    </footer>
+
+    <!-- Cụm 3 nút Đánh / Xếp bài / Hướng dẫn bên phải màn hình (Căn chính giữa chiều dọc màn hình) -->
+    <div class="match-action-controls" id="matchActionControls">
+        <!-- Big Red Round Play Button (Dành cho điện thoại / chế độ chọn bài) -->
+        <button class="btn-play-action hidden" id="btnPlaySelected">
+            <span>ĐÁNH</span>
+        </button>
+        <div class="sub-action-row">
+            <!-- Blue Info Button to the left of Sort Button in fast play off mode -->
+            <button class="btn-info-action hidden" id="btnInfoAction">
+                <span>i</span>
+            </button>
+            <!-- Small Sort Button below Play Button in fast play off mode -->
+            <button class="btn-sort-action hidden" id="btnSortAction">
+                <span>XẾP BÀI</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- Favor Select Modal -->
+    <div class="favor-select-modal" id="favorSelectModal">
+        <div class="favor-select-title">Chọn người chơi để xin 1 lá bài</div>
+        <div class="favor-avatar-container" id="favorAvatarContainer">
+            <!-- Rendered dynamically -->
+        </div>
+    </div>
+    <!-- Combo Target Select Modal -->
+    <div class="favor-select-modal" id="comboTargetSelectModal">
+        <div class="favor-select-title" id="comboTargetSelectTitle">Chọn mục tiêu để cướp bài</div>
+        <div class="favor-avatar-container" id="comboTargetAvatarContainer">
+            <!-- Rendered dynamically -->
+        </div>
+    </div>
+    <!-- Slap Target Select Modal -->
+    <div class="favor-select-modal" id="slapTargetSelectModal">
+        <div class="favor-select-title" id="slapTargetSelectTitle">CHỌN NGƯỜI CHƠI ĐỂ SLAP</div>
+        <div class="favor-avatar-container" id="slapTargetAvatarContainer">
+            <!-- Rendered dynamically -->
+        </div>
+    </div>
+    <!-- See The Others Target Select Modal -->
+    <div class="favor-select-modal" id="seetheothersTargetSelectModal">
+        <div class="favor-select-title" id="seetheothersTargetSelectTitle">CHỌN NGƯỜI CHƠI ĐỂ NHÌN BÀI</div>
+        <div class="favor-avatar-container" id="seetheothersTargetAvatarContainer">
+            <!-- Rendered dynamically -->
+        </div>
+    </div>
+
+    <!-- Garbage Collection Overlay -->
+    <div class="garbage-collection-overlay hidden" id="garbageCollectionOverlay">
+        <div class="garbage-collection-trash-can" id="garbageTrashCan">
+            <img src="cards/garbage_collection/trash_can.svg" alt="Trash Can" class="garbage-trash-img" id="garbageTrashImg">
+        </div>
+    </div>
+
+    <!-- Combo Card Type Select Modal -->
+    <div class="favor-select-modal card-type-select-modal" id="cardTypeSelectModal">
+        <div class="favor-select-title" id="cardTypeSelectTitle">Chọn 1 lá bài bạn muốn đòi</div>
+        <div class="card-type-grid" id="cardTypeGrid">
+            <!-- Rendered dynamically -->
+        </div>
+    </div>
+
+    <!-- Settings Modal -->
+    <div class="modal-backdrop hidden" id="settingsModal">
+        <div class="modal-panel">
+            <div class="modal-header">
+                <h2>CÀI ĐẶT</h2>
+                <button class="btn-close" id="btnCloseSettings">&times;</button>
+            </div>
+            <div class="modal-body">
+                <!-- Toggle 1: Âm nhạc -->
+                <div class="setting-row">
+                    <div class="setting-info">
+                        <span class="setting-title">ÂM NHẠC</span>
+                    </div>
+                    <label class="switch">
+                        <input type="checkbox" id="toggleMusic" checked>
+                        <span class="slider round"></span>
+                    </label>
+                </div>
+                <!-- Toggle 2: Hiệu ứng âm thanh -->
+                <div class="setting-row">
+                    <div class="setting-info">
+                        <span class="setting-title">HIỆU ỨNG ÂM THANH</span>
+                    </div>
+                    <label class="switch">
+                        <input type="checkbox" id="toggleSfx" checked>
+                        <span class="slider round"></span>
+                    </label>
+               </div>
+               <!-- Toggle 3: Đánh bài nhanh -->
+               <div class="setting-row">
+                    <div class="setting-info">
+                        <span class="setting-title">ĐÁNH BÀI NHANH</span>
+                    </div>
+                    <label class="switch">
+                        <input type="checkbox" id="toggleFastPlay">
+                        <span class="slider round"></span>
+                    </label>
+                </div>
+                 <!-- Nút yêu cầu đóng phòng (hiển thị cho tất cả mọi người trong ván) -->
+                 <div class="setting-row" id="rowCloseRoom" style="display: flex; justify-content: center; margin-top: 20px;">
+                     <button id="btnRequestCloseRoom" style="background: #fffdeb; color: #18181b; border: 2px solid #18181b; border-radius: 0; box-shadow: 4px 4px 0px #000000; font-family: 'Be Vietnam Pro', sans-serif; font-weight: 800; font-size: 1rem; text-transform: uppercase; padding: 12px 24px; cursor: pointer; width: 100%; transition: all 0.2s;" onmouseover="if(this.disabled)return; this.style.background='#facc15'; this.style.boxShadow='6px 6px 0px #000000';" onmouseout="if(this.disabled)return; if(hasRequestedCloseRoomInMatch)return; this.style.background='#fffdeb'; this.style.boxShadow='4px 4px 0px #000000';" onmousedown="if(this.disabled)return; this.style.boxShadow='0px 0px 0px #000000';">YÊU CẦU ĐÓNG PHÒNG</button>
+                 </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Card Inspect Modal (Khi click chuột phải vào lá bài) -->
+    <div class="modal-backdrop card-inspect-backdrop hidden" id="cardInspectModal" style="z-index: 10005;">
+        <div class="modal-panel card-inspect-panel" id="cardInspectPanel">
+            <div class="modal-header">
+                <h2>CHỨC NĂNG</h2>
+                <button class="btn-close" id="btnCloseInspect">&times;</button>
+            </div>
+            <div class="modal-body inspect-modal-body">
+                <div class="inspect-left">
+                    <div class="inspect-card-preview" id="inspectCardPreview"></div>
+                </div>
+                <div class="inspect-right">
+                    <h3 class="inspect-title" id="inspectCardName"></h3>
+                    <div class="inspect-content" id="inspectCardContent"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        <!-- Chat Sticker Bar (Hiện hàng ngang trên thanh nhập tin nhắn) -->
+    <div class="chat-sticker-bar hidden" id="chatStickerBar">
+        <img src="assets/sticker/sticker1.png" class="chat-sticker-item" data-sticker="1" />
+        <img src="assets/sticker/sticker2.png" class="chat-sticker-item" data-sticker="2" />
+        <img src="assets/sticker/sticker3.png" class="chat-sticker-item" data-sticker="3" />
+        <img src="assets/sticker/sticker4.png" class="chat-sticker-item" data-sticker="4" />
+        <img src="assets/sticker/sticker5.png" class="chat-sticker-item" data-sticker="5" />
+    </div>
+
+    <!-- Chat System UI -->
+    <div class="chat-input-wrapper hidden" id="chatInputWrapper">
+        <input type="text" class="chat-input-field" id="chatInputField" placeholder="Nhập tin nhắn..." maxlength="120" />
+        <button class="btn-chat-send" id="btnChatSend">
+            <svg width="42" height="42" viewBox="0 0 24 24" fill="none" stroke="#fffdeb" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="22" y1="2" x2="11" y2="13"></line>
+                <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+            </svg>
+        </button>
+    </div>
+
+    <!-- Voice Chat UI -->
+    <div class="media-controls-match">
+        <button class="btn-media-control" id="btnToggleMic">
+            <svg id="iconMicOff" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#fffdeb" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="1" y1="1" x2="23" y2="23" stroke="#fffdeb"></line>
+                <path d="M9 9v3a3 3 0 0 0 5.12 2.12M15 9.34V4a3 3 0 0 0-5.94-.6"></path>
+                <path d="M17 16.95A7 7 0 0 1 5 12v-2m14 0v2a7 7 0 0 1-.11 1.23"></path>
+                <line x1="12" y1="19" x2="12" y2="23"></line>
+                <line x1="8" y1="23" x2="16" y2="23"></line>
+            </svg>
+            <svg id="iconMicOn" class="hidden" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#fffdeb" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path>
+                <path d="M19 10v2a7 7 0 0 1-14 0v-2"></path>
+                <line x1="12" y1="19" x2="12" y2="23"></line>
+                <line x1="8" y1="23" x2="16" y2="23"></line>
+            </svg>
+        </button>
+        <button class="btn-media-control" id="btnToggleSpeaker">
+            <svg id="iconSpeakerOn" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#fffdeb" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+                <path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+                <path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path>
+            </svg>
+            <svg id="iconSpeakerOff" class="hidden" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#fffdeb" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+                <line x1="23" y1="9" x2="17" y2="15"></line>
+                <line x1="17" y1="9" x2="23" y2="15"></line>
+            </svg>
+        </button>
+        <button class="btn-media-control" id="btnChatToggle">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#fffdeb" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+            </svg>
+        </button>
+    </div>
+
+    <div class="chat-messages-container" id="chatMessagesContainer"></div>
+
+    <!-- Vote Close Room Popup (To hơn gấp 2 lần) -->
+    <div class="modal-backdrop hidden" id="voteCloseRoomPopup" style="z-index: 10000;">
+        <div class="modal-panel vote-close-modal-panel">
+            <div class="modal-header vote-close-header">
+                <h2>ĐÓNG PHÒNG ?</h2>
+                <span id="voteCloseTimer" class="vote-close-timer">10s</span>
+            </div>
+            <div class="modal-body vote-close-body">
+                <div class="vote-requester-text">Yêu cầu từ <span id="voteRequesterName">...</span></div>
+                <div class="vote-dots-container" id="voteDotsContainer">
+                    <!-- JS tự động render chấm tròn -->
+                </div>
+                <div class="vote-actions-wrapper" id="voteActionsWrapper">
+                    <button id="btnVoteYes" class="btn-vote-choice btn-vote-yes">ĐỒNG Ý</button>
+                    <button id="btnVoteNo" class="btn-vote-choice btn-vote-no">TỪ CHỐI</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- See The Future Overlay -->
+    <div class="see-future-overlay hidden" id="seeFutureOverlay">
+        
+        <div class="see-future-cards-container" id="seeFutureCardsContainer">
+            <!-- JS will inject 3 cards here -->
+        </div>
+        <button class="btn-auth-submit" id="btnSeeFutureDone">Xem xong</button>
+    </div>
+
+    <!-- Defuse Modal (Secret UI for placing exploding kitten back) -->
+    <div class="modal-backdrop hidden" id="defuseModal" style="z-index: 9999;">
+        <div class="modal-panel" style="max-width: 580px; padding: 24px 32px;">
+            <div class="modal-header" style="padding-bottom: 16px;">
+                <h2 style="color: #fffdeb; font-size: 2.2rem; font-weight: 800; letter-spacing: 2px;">GÀI BOM BÍ MẬT</h2>
+            </div>
+            <div class="modal-body" style="padding: 16px 20px;">
+                <div style="width: 100%; text-align: center; margin: 15px 0;">
+                    <div style="font-size: 1.5rem; color: #e2e8f0; margin-bottom: 20px; font-weight: bold; text-transform: uppercase;">
+                        Chồng bài rút: <span id="defuseDeckCount" style="color: #fffdeb; font-size: 2.0rem; padding: 0 6px;">0</span> lá
+                    </div>
+                    
+                    <div class="defuse-slider-wrapper" style="width: 100%; padding: 0; box-sizing: border-box; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px;">
+                        <div style="display: grid; grid-template-columns: 160px 76px; gap: 16px; align-items: center; justify-content: center;">
+                            <span style="font-size: 1.35rem; color: #a1a1aa; font-weight: bold; text-align: right;">Trên cùng</span>
+                            <button type="button" id="btnDefuseRight" class="defuse-step-btn">&#8593;</button>
+                        </div>
+                        
+                        <div class="defuse-slider-vert-container">
+                            <div class="defuse-visual-track"></div>
+                            <input type="range" id="defuseSlider" min="0" max="10" value="10" />
+                        </div>
+                        
+                        <div style="display: grid; grid-template-columns: 160px 76px; gap: 16px; align-items: center; justify-content: center;">
+                            <span style="font-size: 1.35rem; color: #a1a1aa; font-weight: bold; text-align: right;">Đáy chồng bài</span>
+                            <button type="button" id="btnDefuseLeft" class="defuse-step-btn">&#8595;</button>
+                        </div>
+                    </div>
+                    
+                    <div id="defusePosLabel" style="color: #ef4444; font-size: 1.85rem; margin-top: 22px; font-weight: 900; text-shadow: 0 0 12px rgba(239, 68, 68, 0.5);">Lá mèo nổ: Lá 1</div>
+                </div>
+
+                <button type="button" class="btn-auth-submit" id="btnSubmitDefuse">GÀI BOM XONG</button>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Defuse Wait Banner -->
+    <div id="defuseWaitBanner" class="hidden">
+        Đang chờ <span id="defuseWaitName" style="color: #fffdeb; font-weight: bold;"></span> đặt lại bom...
+    </div>
+
+    <!-- Turns Remaining Banner with Integrated 20s Countdown Timer -->
+    <div id="turnsRemainingBanner" class="hidden">
+        <div class="turn-banner-content" id="turnBannerContent"></div>
+        <div class="turn-timer-progress-track">
+            <div class="turn-timer-progress-bar" id="turnTimerProgressBar"></div>
+        </div>
+    </div>
+
+    <!-- Explosion Overlay -->
+    <div id="explosionOverlay" class="hidden"></div>
+    <div id="gameOverOverlay" class="hidden">
+        <h1 class="game-over-text"><span id="winnerName">USERNAME</span> WIN!</h1>
+    </div>
+
+    <!-- Post-Match Rank Summary UI Overlay -->
+    <div id="postMatchRankOverlay" class="hidden">
+        <div class="rank-summary-panel">
+            <div class="rank-summary-header">
+                <h2>TỔNG KẾT</h2>
+                <button class="rank-close-btn" id="btnCloseRankOverlay">&times;</button>
+            </div>
+            <div class="rank-players-row" id="rankPlayersRow">
+                <!-- Dynamic player rank cards inserted here -->
+            </div>
+            <button class="rank-footer-close-btn" id="btnBottomCloseRankOverlay">Đóng</button>
+        </div>
+    </div>
+
+    <!-- Link to Socket.IO -->
+    <script src="https://cdn.socket.io/4.7.5/socket.io.min.js"></script>
+    <script src="config/env.js?v=31"></script>
+    
+    <!-- Link to External JavaScript -->
+    <script src="resource_loader.js?v=5"></script>
+    <script src="security.js"></script>
+    <script src="voice_engine.js"></script>
+    <!-- Script xử lý game logic -->
+    <script src="match.js?v=59"></script>
+
+    <!-- Game Notifications (Right Center) -->
+    <div id="gameToastContainer" class="game-toast-container"></div>
+</body>
+</html>
+

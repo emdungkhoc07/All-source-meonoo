@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover, interactive-widget=overlays-content">
+    <title>ExplodingKitten</title>
+    <link rel="icon" type="image/png" href="assets/favicon/favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Nunito:wght@300;400;500;600;700;800;900&family=Be+Vietnam+Pro:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="index.css">
+    <script src="security.js"></script>
+</head>
+<body>
+    <div class="status-bar" id="statusBar">
+        <div class="brand-group">
+            <div class="status-brand">EXPLODING KITTEN</div>
+            <div class="status-author">@NGUYENTHEVI</div>
+        </div>
+        <div class="auth-group">
+            <span class="auth-link" id="btnShowLogin">ĐĂNG NHẬP</span>
+            <span class="auth-link" id="btnShowRegister">ĐĂNG KÍ</span>
+        </div>
+    </div>
+
+    <div class="main-content">
+        <div class="hero-left">
+            <div class="hero-text-wrapper">
+                <h1 class="hero-title">EXPLODING<br>KITTEN</h1>
+                <div class="hero-bottom-content">
+                    <p class="hero-subtitle">nguyenthevi -  Vesion 3.0</p>
+                    <button class="hero-btn" id="btnHeroQuatLuon">QUẤT LUÔN</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-backdrop hidden" id="loginModal">
+        <div class="modal-panel">
+            <div class="modal-header">
+                <h2>Đăng Nhập</h2>
+                <button class="btn-close" id="btnCloseLogin">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="auth-form-group">
+                    <label>Email</label>
+                    <input type="email" class="auth-input" id="loginIdentifier" placeholder="name@example.com" />
+                </div>
+                <div class="auth-form-group">
+                    <label>Mật khẩu</label>
+                    <input type="password" class="auth-input" id="loginPassword" placeholder="••••••••" style="padding-right: 40px;" />
+                    <button type="button" class="btn-toggle-password" tabindex="-1" onclick="togglePassword('loginPassword', this)">
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path>
+                            <line x1="1" y1="1" x2="23" y2="23"></line>
+                        </svg>
+                    </button>
+                </div>
+                <button type="button" class="btn-auth-submit" id="btnSubmitLogin">Xác Nhận</button>
+                <div class="auth-divider">
+                    <span>HOẶC</span>
+                </div>
+                <button type="button" class="btn-auth-google" id="btnGoogleLogin">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M23.04 12.2614C23.04 11.4459 22.9668 10.6627 22.8309 9.91138H12V14.3575H18.1891C17.9223 15.7948 17.1127 17.0116 15.8945 17.8282V20.7139H19.6109C21.7855 18.7118 23.04 15.7636 23.04 12.2614Z" fill="#4285F4"/>
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M12 23.4998C15.105 23.4998 17.7082 22.4709 19.6109 20.7139L15.8945 17.8282C14.8655 18.5173 13.5459 18.9268 12 18.9268C9.00409 18.9268 6.46955 16.9023 5.565 14.1848H1.72318V17.1643C3.61545 20.9227 7.50455 23.4998 12 23.4998Z" fill="#34A853"/>
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M5.565 14.1848C5.33455 13.4957 5.20409 12.7593 5.20409 11.9998C5.20409 11.2403 5.33455 10.5039 5.565 9.81477V6.83523H1.72318C0.938636 8.39682 0.5 10.1543 0.5 11.9998C0.5 13.8453 0.938636 15.6027 1.72318 17.1643L5.565 14.1848Z" fill="#FBBC05"/>
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M12 5.07295C13.6895 5.07295 15.2045 5.65364 16.3973 6.7925L19.6945 3.49523C17.7027 1.63977 15.105 0.5 12 0.5C7.50455 0.5 3.61545 3.07705 1.72318 6.83523L5.565 9.81477C6.46955 7.09727 9.00409 5.07295 12 5.07295Z" fill="#EA4335"/>
+                    </svg>
+                    Đăng nhập bằng Google
+                </button>
+                <div class="auth-switch-text">
+                    Chưa có tài khoản? <span class="auth-switch-link" id="linkToRegister">Đăng kí ngay</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-backdrop hidden" id="registerModal">
+        <div class="modal-panel">
+            <div class="modal-header">
+                <h2>Đăng Kí Tài Khoản</h2>
+                <button class="btn-close" id="btnCloseRegister">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="auth-form-group">
+                    <label>Tên tài khoản</label>
+                    <input type="text" class="auth-input" id="registerUsername" placeholder="username" />
+                </div>
+                <div class="auth-form-group">
+                    <label>Email</label>
+                    <input type="email" class="auth-input" id="registerIdentifier" placeholder="name@example.com" />
+                </div>
+                <div class="auth-form-group">
+                    <label>Mật khẩu</label>
+                    <input type="password" class="auth-input" id="registerPassword" placeholder="Đặt mật khẩu" style="padding-right: 40px;" />
+                    <button type="button" class="btn-toggle-password" tabindex="-1" onclick="togglePassword('registerPassword', this)">
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path>
+                            <line x1="1" y1="1" x2="23" y2="23"></line>
+                        </svg>
+                    </button>
+                </div>
+                <div class="auth-form-group">
+                    <label>Xác nhận mật khẩu</label>
+                    <input type="password" class="auth-input" id="registerConfirmPassword" placeholder="Nhập lại mật khẩu" style="padding-right: 40px;" />
+                    <button type="button" class="btn-toggle-password" tabindex="-1" onclick="togglePassword('registerConfirmPassword', this)">
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path>
+                            <line x1="1" y1="1" x2="23" y2="23"></line>
+                        </svg>
+                    </button>
+                </div>
+                <button type="button" class="btn-auth-submit" id="btnSubmitRegister">Tạo Tài Khoản</button>
+                <div class="auth-divider">
+                    <span>HOẶC</span>
+                </div>
+                <button type="button" class="btn-auth-google" id="btnGoogleRegister">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M23.04 12.2614C23.04 11.4459 22.9668 10.6627 22.8309 9.91138H12V14.3575H18.1891C17.9223 15.7948 17.1127 17.0116 15.8945 17.8282V20.7139H19.6109C21.7855 18.7118 23.04 15.7636 23.04 12.2614Z" fill="#4285F4"/>
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M12 23.4998C15.105 23.4998 17.7082 22.4709 19.6109 20.7139L15.8945 17.8282C14.8655 18.5173 13.5459 18.9268 12 18.9268C9.00409 18.9268 6.46955 16.9023 5.565 14.1848H1.72318V17.1643C3.61545 20.9227 7.50455 23.4998 12 23.4998Z" fill="#34A853"/>
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M5.565 14.1848C5.33455 13.4957 5.20409 12.7593 5.20409 11.9998C5.20409 11.2403 5.33455 10.5039 5.565 9.81477V6.83523H1.72318C0.938636 8.39682 0.5 10.1543 0.5 11.9998C0.5 13.8453 0.938636 15.6027 1.72318 17.1643L5.565 14.1848Z" fill="#FBBC05"/>
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M12 5.07295C13.6895 5.07295 15.2045 5.65364 16.3973 6.7925L19.6945 3.49523C17.7027 1.63977 15.105 0.5 12 0.5C7.50455 0.5 3.61545 3.07705 1.72318 6.83523L5.565 9.81477C6.46955 7.09727 9.00409 5.07295 12 5.07295Z" fill="#EA4335"/>
+                    </svg>
+                    Đăng nhập bằng Google
+                </button>
+                <div class="auth-switch-text">
+                    Đã có tài khoản? <span class="auth-switch-link" id="linkToLogin">Đăng nhập</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-backdrop hidden" id="alertModal" style="z-index: 9999;">
+        <div class="modal-panel alert-modal-panel">
+            <div class="modal-header alert-modal-header">
+                <h2 id="alertTitle">THÔNG BÁO</h2>
+            </div>
+            <div class="modal-body alert-modal-body">
+                <p id="alertMessage"></p>
+                <div id="alertButtons">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const btnShowLogin = document.getElementById('btnShowLogin');
+        const btnShowRegister = document.getElementById('btnShowRegister');
+        const loginModal = document.getElementById('loginModal');
+        const registerModal = document.getElementById('registerModal');
+        const btnCloseLogin = document.getElementById('btnCloseLogin');
+        const btnCloseRegister = document.getElementById('btnCloseRegister');
+        const linkToRegister = document.getElementById('linkToRegister');
+        const linkToLogin = document.getElementById('linkToLogin');
+
+        function openModal(modal) {
+            modal.classList.remove('hidden');
+        }
+        function closeModal(modal) {
+            modal.classList.add('hidden');
+        }
+
+        btnShowLogin.addEventListener('click', () => openModal(loginModal));
+        btnShowRegister.addEventListener('click', () => openModal(registerModal));
+
+        btnCloseLogin.addEventListener('click', () => closeModal(loginModal));
+        btnCloseRegister.addEventListener('click', () => closeModal(registerModal));
+
+        linkToRegister.addEventListener('click', () => {
+            closeModal(loginModal);
+            openModal(registerModal);
+        });
+
+        linkToLogin.addEventListener('click', () => {
+            closeModal(registerModal);
+            openModal(loginModal);
+        });
+
+        window.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                if (!loginModal.classList.contains('hidden')) closeModal(loginModal);
+                if (!registerModal.classList.contains('hidden')) closeModal(registerModal);
+            }
+        });
+        window.togglePassword = function(inputId, btn) {
+            const input = document.getElementById(inputId);
+            if (input.type === 'password') {
+                input.type = 'text';
+                btn.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                    <circle cx="12" cy="12" r="3"></circle>
+                </svg>`;
+                btn.style.color = '#ffffff';
+            } else {
+                input.type = 'password';
+                btn.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path>
+                    <line x1="1" y1="1" x2="23" y2="23"></line>
+                </svg>`;
+                btn.style.color = '#3f3f46';
+            }
+        };
+    </script>
+    <script src="security.js"></script>
+    <script>
+        (function () {
+            function fitScreenPrecision() {
+                window._appScale = 1;
+                window._appOffsetX = 0;
+                window._appOffsetY = 0;
+            }
+
+            window.getAppScale = () => 1;
+            window.fitScreenPrecision = fitScreenPrecision;
+
+            // Universal Fullscreen Toggle Function (Hỗ trợ toàn diện cho iOS Safari & Android)
+            window.requestUniversalFullscreen = async () => {
+                const docEl = document.documentElement;
+                try {
+                    if (docEl.requestFullscreen) {
+                        await docEl.requestFullscreen();
+                        return true;
+                    } else if (docEl.webkitRequestFullscreen) {
+                        await docEl.webkitRequestFullscreen();
+                        return true;
+                    } else if (docEl.webkitEnterFullscreen) {
+                        await docEl.webkitEnterFullscreen();
+                        return true;
+                    }
+                } catch (err) {
+                    console.warn("[Fullscreen] API fallback:", err);
+                }
+
+                window.scrollTo(0, 0);
+                setTimeout(() => window.scrollTo(0, 1), 100);
+                setTimeout(() => window.scrollTo(0, 0), 250);
+                fitScreenPrecision();
+                return true;
+            };
+
+            const isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+
+            const isKeyboardActive = () => {
+                const el = document.activeElement;
+                if (!el) return false;
+                const tag = el.tagName;
+                return tag === 'INPUT' || tag === 'TEXTAREA' || el.isContentEditable;
+            };
+
+            const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || 
+                             (window.matchMedia && window.matchMedia('(pointer: coarse)').matches);
+
+            if (isMobile) {
+                const isPortrait = () => {
+                    if (isKeyboardActive()) return false;
+                    if (screen.orientation && screen.orientation.type) {
+                        return screen.orientation.type.includes('portrait');
+                    }
+                    if (window.orientation !== undefined && typeof window.orientation === 'number') {
+                        return window.orientation === 0 || window.orientation === 180;
+                    }
+                    return window.innerHeight > window.innerWidth;
+                };
+
+                const isFullscreen = () => {
+                    if (isIOS) {
+                        return !isPortrait();
+                    }
+                    let parentFullscreen = false;
+                    try {
+                        if (window.parent !== window && window.parent.document) {
+                            parentFullscreen = !!(window.parent.document.fullscreenElement || window.parent.document.webkitFullscreenElement);
+                        }
+                    } catch(e) {}
+                    return !!(document.fullscreenElement || document.webkitFullscreenElement) || parentFullscreen;
+                };
+
+                const checkAndShowRotatePrompt = () => {
+                    const promptEl = document.getElementById('mobileRotatePrompt');
+                    if (isKeyboardActive()) {
+                        if (promptEl) promptEl.remove();
+                        fitScreenPrecision();
+                        return;
+                    }
+                    if (isPortrait() || !isFullscreen()) {
+                        if (!promptEl) {
+                            showRotatePrompt();
+                        }
+                    } else {
+                        if (promptEl) {
+                            promptEl.remove();
+                        }
+                    }
+                    fitScreenPrecision();
+                };
+
+                const showRotatePrompt = () => {
+                    if (isKeyboardActive()) return;
+                    if (document.getElementById('mobileRotatePrompt')) return;
+
+                    const overlay = document.createElement('div');
+                    overlay.id = 'mobileRotatePrompt';
+                    overlay.className = 'modal-backdrop';
+                    overlay.style.cssText = 'position: fixed; inset: 0; z-index: 2147483647; display: flex; align-items: center; justify-content: center; background: rgba(0, 0, 0, 0.94); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); padding: 12px; box-sizing: border-box; overflow-y: auto;';
+                    
+                    const panel = document.createElement('div');
+                    panel.className = 'modal-panel';
+                    panel.style.cssText = 'max-width: 420px; width: 100%; max-height: calc(100dvh - 24px); overflow-y: auto; text-align: center; box-shadow: 0 20px 50px rgba(0,0,0,0.95); font-family: "Be Vietnam Pro", sans-serif; background: #18181b; border: 2px solid #52525b; padding: clamp(16px, 4vh, 32px) clamp(16px, 5vw, 32px); border-radius: 0; box-sizing: border-box; margin: auto;';
+                    
+                    const header = document.createElement('div');
+                    header.className = 'modal-header';
+                    header.style.cssText = 'display: flex; flex-direction: column; align-items: center; justify-content: center; background: transparent; padding: 0; margin-bottom: clamp(10px, 2.5vh, 18px); border: none;';
+                    
+                    const iconSvg = document.createElement('div');
+                    iconSvg.innerHTML = `<svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="#fffdeb" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom: 10px;"><rect x="6" y="2" width="12" height="20" rx="3" ry="3"></rect><line x1="9.5" y1="18.5" x2="14.5" y2="18.5"></line></svg>`;
+                    header.appendChild(iconSvg);
+
+                    const title = document.createElement('h2');
+                    title.style.cssText = 'color: #fffdeb; width: 100%; text-align: center; margin: 0; font-size: clamp(1.1rem, 5vw, 1.5rem); text-transform: uppercase; font-family: "Be Vietnam Pro", sans-serif; font-weight: 900; letter-spacing: 1px;';
+                    title.textContent = 'XOAY NGANG MÀN HÌNH';
+                    header.appendChild(title);
+                    panel.appendChild(header);
+
+                    const body = document.createElement('div');
+                    body.className = 'modal-body';
+                    body.style.cssText = 'text-align: center; display: flex; flex-direction: column; align-items: center; gap: clamp(12px, 3vh, 20px); padding: 0; overflow: visible;';
+
+                    const desc = document.createElement('p');
+                    desc.style.cssText = 'color: #e2e8f0; font-size: clamp(0.9rem, 3.8vw, 1.05rem); line-height: 1.5; margin: 0; font-weight: 600;';
+                    desc.textContent = 'Vui lòng xoay ngang thiết bị để có trải nghiệm tốt nhất!';
+                    body.appendChild(desc);
+
+                    const btn = document.createElement('button');
+                    btn.className = 'btn-auth-submit';
+                    btn.style.cssText = 'width: 100%; margin: 0; font-size: clamp(0.95rem, 4vw, 1.1rem); font-weight: 900; letter-spacing: 1.5px; padding: 12px 20px; background: #09090b; color: #fffdeb; border: 2px solid #fffdeb; border-radius: 0; text-transform: uppercase; cursor: pointer; transition: all 0.2s ease; box-sizing: border-box; flex-shrink: 0;';
+                    btn.textContent = 'CHẤP NHẬN';
+
+                    btn.onmouseover = () => { btn.style.background = '#fffdeb'; btn.style.color = '#09090b'; };
+                    btn.onmouseout = () => { btn.style.background = '#09090b'; btn.style.color = '#fffdeb'; };
+
+                    btn.addEventListener('click', async () => {
+                        try {
+                            await window.requestUniversalFullscreen();
+                            if (screen.orientation && screen.orientation.lock) {
+                                await screen.orientation.lock('landscape').catch(() => {});
+                            }
+                            try { sessionStorage.setItem('meono_fullscreen_accepted', '1'); } catch(e) {}
+                        } catch (err) {
+                            console.warn("Không thể kích hoạt Fullscreen:", err);
+                        } finally {
+                            overlay.remove();
+                            fitScreenPrecision();
+                        }
+                    });
+
+                    body.appendChild(btn);
+                    panel.appendChild(body);
+                    overlay.appendChild(panel);
+                    document.body.appendChild(overlay);
+                };
+
+                ['visibilitychange', 'fullscreenchange', 'webkitfullscreenchange', 'resize', 'orientationchange', 'focus'].forEach(evt => {
+                    window.addEventListener(evt, () => {
+                        setTimeout(checkAndShowRotatePrompt, 100);
+                        setTimeout(checkAndShowRotatePrompt, 400);
+                    });
+                });
+
+                setTimeout(checkAndShowRotatePrompt, 200);
+
+                const autoRestoreFullscreen = async () => {
+                    try {
+                        const accepted = sessionStorage.getItem('meono_fullscreen_accepted');
+                        if (!accepted) return;
+                        if (isFullscreen()) return;
+                        await window.requestUniversalFullscreen();
+                        if (screen.orientation && screen.orientation.lock) {
+                            await screen.orientation.lock('landscape').catch(() => {});
+                        }
+                        const promptEl = document.getElementById('mobileRotatePrompt');
+                        if (promptEl) promptEl.remove();
+                    } catch(e) {}
+                };
+                document.addEventListener('touchstart', autoRestoreFullscreen, { once: true });
+                document.addEventListener('click', autoRestoreFullscreen, { once: true });
+            }
+
+            document.addEventListener('gesturestart', (e) => e.preventDefault());
+            document.addEventListener('gesturechange', (e) => e.preventDefault());
+            document.addEventListener('gestureend', (e) => e.preventDefault());
+
+            document.addEventListener('wheel', function (e) {
+                if (e.ctrlKey) e.preventDefault();
+            }, { passive: false });
+
+            fitScreenPrecision();
+        })();
+    </script>
+    
+    <script type="module" src="auth.js"></script>
+</body>
+</html>
