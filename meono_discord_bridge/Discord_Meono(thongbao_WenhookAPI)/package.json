@@ -1,0 +1,22 @@
+{
+  "name": "meono_discord_bridge",
+  "version": "1.0.0",
+  "description": "Discord Webhook Bridge for Meono (Exploding Kittens)",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "runner": "node server_runner.js"
+  },
+  "keywords": [
+    "discord",
+    "webhook",
+    "exploding-kittens",
+    "meono"
+  ],
+  "author": "Meono",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "socket.io-client": "^4.8.1"
+  }
+}
